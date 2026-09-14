@@ -419,6 +419,64 @@ section{padding-block:34px;}
 .cafe-note b{color:var(--ink);}
 .cafe-note + .cafe-note{margin-top:10px;}
 
+/* ---------- Khối "ăn gì" ---------- */
+.eatbox{
+  margin-top:18px;
+  background:var(--surface);
+  border:2.5px solid var(--accent-pop);
+  border-radius:var(--r-lg);
+  box-shadow:0 6px 0 color-mix(in srgb, var(--accent-pop) 42%, transparent);
+  overflow:hidden;
+}
+.eathead{
+  display:flex;align-items:center;gap:11px;
+  padding:13px 17px;
+  background:linear-gradient(100deg, var(--accent-soft), var(--accent-2, var(--lemon-soft)));
+  border-bottom:2.5px solid var(--accent-pop);
+}
+.eathead .ic{
+  flex:0 0 auto;width:40px;height:40px;border-radius:14px;
+  background:var(--surface);border:2.5px solid var(--accent-pop);
+  display:grid;place-items:center;font-size:20px;
+}
+.eathead h4{font-family:var(--display);font-weight:800;font-size:17px;margin:0;line-height:1.2;}
+.eathead .eatsub{display:block;font-size:11.5px;font-weight:700;color:var(--accent);margin-top:1px;}
+.eatgroup{padding:15px 17px;}
+.eatgroup + .eatgroup{border-top:2.5px dashed color-mix(in srgb, var(--accent-pop) 55%, transparent);}
+.eatgroup h5{
+  font-family:var(--display);font-weight:800;font-size:14.5px;
+  margin:0 0 10px;color:var(--accent);letter-spacing:.01em;
+}
+.dish{
+  background:var(--ground-2);
+  border:2px solid color-mix(in srgb, var(--accent-pop) 45%, transparent);
+  border-radius:var(--r-md);
+  padding:12px 14px;
+}
+.dish + .dish{margin-top:10px;}
+.dish .dname{font-family:var(--display);font-weight:700;font-size:15px;line-height:1.3;margin:0 0 1px;}
+.dish .djp{display:block;font-size:11.5px;font-weight:700;color:var(--accent);margin-bottom:6px;}
+.dish p{margin:0;font-size:13.5px;color:var(--muted);font-weight:500;line-height:1.6;}
+.dish p b{color:var(--ink);font-weight:700;}
+.dish .map{margin-top:9px;}
+.menulist{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:9px;}
+.menulist li{
+  display:flex;gap:10px;align-items:flex-start;
+  font-size:13.5px;color:var(--muted);font-weight:500;line-height:1.55;
+}
+.menulist li .mi{flex:0 0 auto;font-size:15px;line-height:1.35;}
+.menulist li b{color:var(--ink);font-weight:700;}
+.menulist li .ja{font-weight:700;color:var(--accent);font-size:12.5px;}
+.heads-up{
+  margin-top:11px;
+  background:var(--hibiscus-soft);
+  border:2px solid var(--hibiscus);
+  border-radius:var(--r-md);
+  padding:11px 13px;
+  font-size:13px;font-weight:600;color:var(--hibiscus-ink);line-height:1.55;
+}
+.heads-up b{font-weight:800;}
+
 /* ---------- Footer ---------- */
 footer{
   text-align:center;padding:34px 18px 54px;
@@ -614,6 +672,86 @@ footer .hearts{font-size:20px;letter-spacing:4px;display:block;margin-bottom:8px
           <a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=%E3%81%BE%E3%83%BC%E3%81%95%E3%82%93%E3%81%AE%E5%AE%B6%20%E9%82%A3%E8%A6%87%20%E5%9B%BD%E9%9A%9B%E9%80%9A%E3%82%8A" target="_blank" rel="noopener"><span class="pinico" aria-hidden="true">📍</span><span class="jp">沖縄県那覇市牧志 · khu 国際通り<span class="approx">Địa chỉ khu phố — bấm để mở đúng quán trên Maps</span></span></a>
         </div>
       </div>
+
+      <div class="eatbox">
+        <div class="eathead">
+          <div class="ic" aria-hidden="true">🍽️</div>
+          <div>
+            <h4>Ăn gì ngày này</h4>
+            <span class="eatsub">Gợi ý bám đúng tuyến Shuri → Senaga → Kokusai-dori</span>
+          </div>
+        </div>
+
+        <div class="eatgroup">
+          <h5>🍜 Trưa · ngay sau lâu đài Shuri</h5>
+          <div class="dish">
+            <p class="dname">Soba Okinawa trong nhà cổ Ryukyu</p>
+            <span class="djp">首里御殿山 (Udunyama) · 11:30–16:00 (LO 15:30) · nghỉ T2–T3</span>
+            <p>Nhà gỗ mái ngói đỏ <b>150 năm tuổi</b>, xưa là chỗ nghỉ của quan lại Shuri — không gian hợp y hệt buổi sáng đi lâu đài.
+            Gọi <b>ソーキそば (sōki soba)</b>: sườn heo hầm mềm rục trên sợi mì dẹt, nước dùng cá bào + xương heo trong veo.
+            Ăn kèm <b>ジューシー (jūshī)</b> — cơm trộn kiểu Okinawa. Cách Shurijo ~5–7 phút lái xe.</p>
+            <a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=%E9%A6%96%E9%87%8C%E5%BE%A1%E6%AE%BF%E5%B1%B1%20%E3%81%86%E3%81%A9%E3%81%85%E3%82%93%E3%82%84%E3%81%BE%20%E9%A6%96%E9%87%8C%E6%9C%AC%E5%BA%97" target="_blank" rel="noopener"><span class="pinico" aria-hidden="true">📍</span><span class="jp">〒903-0804 沖縄県那覇市首里石嶺町1-121-2</span></a>
+          </div>
+          <div class="dish">
+            <p class="dname">Chợ cá Tomari — thiên đường cá sống 🐟</p>
+            <span class="djp">泊いゆまち · 6:00–18:00 · nên đi trước 12:00</span>
+            <p>Chợ cá của cảng Tomari, dân địa phương mua bán tận nơi. Okinawa là <b>một trong những vựa cá ngừ lớn nhất Nhật</b> —
+            ở đây đủ cả 4 loại maguro, cắt tại chỗ. Một khay <b>刺身盛り (sashimi thập cẩm)</b> hay <b>海鮮丼 (kaisen-don)</b>
+            chỉ tầm 700–1.500 yên, tươi và rẻ hơn hẳn nhà hàng. Có bãi xe lớn, rất tiện vì ngày này mình có xe thuê.
+            Thấy <b>まぐろ屋 みーかがん</b> trong chợ thì cứ vào — họ chuyên cá ngừ.</p>
+            <a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=%E6%B3%8A%E3%81%84%E3%82%86%E3%81%BE%E3%81%A1" target="_blank" rel="noopener"><span class="pinico" aria-hidden="true">📍</span><span class="jp">〒900-0001 沖縄県那覇市港町1-1-18</span></a>
+          </div>
+          <div class="heads-up">
+            <b>⚠️ Bẫy cần tránh:</b> quán soba nổi tiếng nhất khu này là <b>首里そば</b> — nhưng <b>nghỉ đúng Chủ Nhật</b> (và cả thứ Năm), tức đúng ngày mình đi. Đừng lặn lội tới đó rồi hụt.
+          </div>
+        </div>
+
+        <div class="eatgroup">
+          <h5>🌅 Chiều · ăn vặt ở Umikaji Terrace</h5>
+          <ul class="menulist">
+            <li><span class="mi">🦐</span><span><b>Garlic shrimp</b> <span class="ja">by The Shrimp</span> — tôm sốt tỏi bơ kiểu Hawaii, món signature của cả khu, vừa ăn vừa ngắm máy bay hạ cánh.</span></li>
+            <li><span class="mi">🥞</span><span><b>Pancake soufflé</b> <span class="ja">幸せのパンケーキ</span> — bánh bông xốp rung rinh, bơ mật ong Manuka. <b>Nên đặt bàn trước</b>, không thì chờ tới 2 tiếng.</span></li>
+            <li><span class="mi">🍚</span><span><b>Maguro-don</b> — quán cơm cá ngừ do chính ngư dân mở, cá đánh ở vùng biển gần Okinawa.</span></li>
+            <li><span class="mi">🍧</span><span><b>Đá bào sợi Hàn Quốc</b> <span class="ja">シルビン</span> — đá bào mảnh như sợi chỉ, tan ngay trong miệng.</span></li>
+          </ul>
+          <div class="heads-up">💡 Ăn nhẹ thôi nhé — 20:30 còn có tiệc sashimi đang chờ. Phần lớn quán ở đây đóng cửa 21:00.</div>
+        </div>
+
+        <div class="eatgroup">
+          <h5>🐟 Tối · gọi gì ở quán sashimi</h5>
+          <p style="margin:0 0 10px;font-size:13.5px;color:var(--muted);font-weight:500;line-height:1.6;">
+            Cứ mở đầu bằng <b>刺し盛り (sashi-mori)</b> — đĩa sashimi thập cẩm. Cá vùng biển san hô Okinawa khác hẳn cá sashimi ở Tokyo hay Đài Loan, đáng thử nhất là:</p>
+          <ul class="menulist">
+            <li><span class="mi">🐠</span><span><b>Irabuchā</b> <span class="ja">イラブチャー</span> — cá vẹt <b>da xanh lam rực rỡ</b>, chần sơ để giữ nguyên màu da rồi mới cắt. Thịt trắng, giòn sần sật. Món phải chụp ảnh.</span></li>
+            <li><span class="mi">🐟</span><span><b>Gurukun</b> <span class="ja">グルクン</span> — <b>quốc ngư của tỉnh Okinawa</b>. Thịt trắng ngọt dịu; ăn sashimi hoặc rán giòn nguyên con đều ngon.</span></li>
+            <li><span class="mi">🍣</span><span><b>Maguro Okinawa</b> <span class="ja">本マグロ・キハダ</span> — cá ngừ đánh bắt gần bờ, <b>không đông lạnh</b>, nên miếng cá mềm và ngọt hơn hàng nhập.</span></li>
+            <li><span class="mi">🦑</span><span><b>Sēika</b> <span class="ja">セーイカ</span> — mực lá khổng lồ đặc sản, sashimi dày mình, ngọt và dai nhẹ.</span></li>
+            <li><span class="mi">🍇</span><span><b>Umibudō</b> <span class="ja">海ぶどう</span> — "nho biển", rong nho tí hon nổ lách tách trong miệng. <b>Bắt buộc gọi</b> khi ăn sashimi, chấm ponzu.</span></li>
+          </ul>
+          <p style="margin:12px 0 9px;font-size:13.5px;color:var(--muted);font-weight:500;line-height:1.6;">Gọi thêm vài món nóng cho cân bằng:</p>
+          <ul class="menulist">
+            <li><span class="mi">🍖</span><span><b>Rafutē</b> <span class="ja">ラフテー</span> — ba chỉ kho rượu awamori + đường đen, mềm tan, đỉnh cao ẩm thực cung đình Ryukyu.</span></li>
+            <li><span class="mi">🥜</span><span><b>Jīmāmi-dōfu</b> <span class="ja">ジーマーミ豆腐</span> — "đậu hũ" làm từ đậu phộng, dẻo quánh như pudding, béo thơm. Rất lạ miệng.</span></li>
+            <li><span class="mi">🥒</span><span><b>Gōyā chanpurū</b> <span class="ja">ゴーヤーチャンプルー</span> — mướp đắng xào đậu hũ đảo, trứng và thịt hộp. Món quốc dân, đắng nhẹ rất đưa cơm.</span></li>
+            <li><span class="mi">🐷</span><span><b>Heo Agu</b> <span class="ja">あぐー豚</span> — giống heo bản địa Okinawa, mỡ ngọt không ngấy. Có thì gọi phần nướng hoặc shabu.</span></li>
+            <li><span class="mi">🍶</span><span><b>Awamori</b> <span class="ja">泡盛</span> pha nước đá, hoặc bia <b>Orion</b> — chuẩn bài Okinawa.</span></li>
+          </ul>
+        </div>
+
+        <div class="eatgroup">
+          <h5>✨ Bonus · nếu vẫn thèm cá sống</h5>
+          <div class="dish">
+            <p class="dname">Chợ công cộng Makishi — tự chọn cá, nhờ nấu tại chỗ</p>
+            <span class="djp">第一牧志公設市場 · 8:00–22:00 · đi bộ 2–3 phút từ khách sạn</span>
+            <p>Trò vui nhất Naha: tầng 1 là quầy cá tươi đủ màu sắc kiểu nhiệt đới, bạn <b>chọn con cá mình thích</b>,
+            trả thêm phí rồi nhân viên mang lên <b>tầng 2 nấu ngay</b> theo kiểu mình muốn — sashimi, hấp, rán bơ tỏi (gọi là hệ thống <b>「持ち上げ」mochiage</b>).
+            Đây là chỗ dễ gặp irabuchā xanh lè nhất. Tầng 1 nhận nấu tới 19:45, tầng 2 gọi món tới 20:00.
+            Chợ nghỉ Chủ Nhật <b>tuần thứ 4</b> hằng tháng — 20/9 là Chủ Nhật tuần 3 nên vẫn mở bình thường.</p>
+            <a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=%E7%AC%AC%E4%B8%80%E7%89%A7%E5%BF%97%E5%85%AC%E8%A8%AD%E5%B8%82%E5%A0%B4" target="_blank" rel="noopener"><span class="pinico" aria-hidden="true">📍</span><span class="jp">〒900-0014 沖縄県那覇市松尾2-10-1</span></a>
+          </div>
+        </div>
+      </div>
+
       <div class="note">
         <b>🚙 Xe thuê:</b> nhớ mang bằng lái quốc tế (IDP) hoặc bằng lái tiếng Nhật hợp lệ, đặt xe trước vì mùa cao điểm dễ hết xe. Nên đặt trước ở Naha để lấy xe sáng sớm ngày này rồi trả lại trước khi bay ngày cuối (hoặc giữ xe hết D2 rồi trả).
       </div>
