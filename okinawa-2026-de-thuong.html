@@ -1,0 +1,697 @@
+<title>Hai Đứa Đi Okinawa</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Quicksand:wght@500;600;700&display=swap">
+<style>
+:root{
+  --ground:#FFFDF5;
+  --ground-2:#FFF6E4;
+  --surface:#FFFFFF;
+  --surface-2:#F0FBFD;
+  --ink:#27454F;
+  --muted:#6E8A95;
+  --line:rgba(39,69,79,0.13);
+  --shadow:rgba(39,69,79,0.16);
+
+  /* tone mùa hè: nắng, biển, hoa */
+  --hibiscus:#FF5C8A;   --hibiscus-ink:#D91E60;  --hibiscus-soft:#FFE0EA;   /* hoa dâm bụt */
+  --kouri:#00C4DE;      --kouri-ink:#00819B;     --kouri-soft:#D0F4FB;      /* biển Kouri */
+  --mango:#FF8A2B;      --mango-ink:#D2600C;     --mango-soft:#FFE7CE;      /* xoài chín */
+  --beniimo:#3D9DF2;    --beniimo-ink:#1565C0;   --beniimo-soft:#DAEDFF;    /* trời trưa */
+  --mint:#20C9A0;       --mint-ink:#00866B;      --mint-soft:#CCF6EB;       /* nước cạn */
+  --lemon:#FFCE2E;      --lemon-ink:#A87C00;     --lemon-soft:#FFF3C4;      /* nắng */
+
+  --accent:var(--hibiscus-ink);
+  --accent-pop:var(--hibiscus);
+  --accent-soft:var(--hibiscus-soft);
+
+  --display:'Baloo 2','Quicksand','Segoe UI',system-ui,sans-serif;
+  --body:'Quicksand','Segoe UI',system-ui,sans-serif;
+  --r-lg:26px;
+  --r-md:18px;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  background:var(--ground);
+  color:var(--ink);
+  font-family:var(--body);
+  font-weight:500;
+  font-size:15.5px;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+:focus-visible{outline:3px solid var(--kouri);outline-offset:3px;border-radius:8px;}
+.wrap{max-width:760px;margin:0 auto;padding-inline:18px;}
+
+/* ---------- Hero ---------- */
+.hero{
+  position:relative;
+  background:
+    radial-gradient(65% 55% at 6% 2%, var(--lemon-soft), transparent 62%),
+    radial-gradient(70% 60% at 98% 0%, var(--hibiscus-soft), transparent 60%),
+    radial-gradient(120% 62% at 50% 96%, var(--kouri-soft), transparent 72%),
+    linear-gradient(168deg, var(--beniimo-soft) 0%, var(--ground) 78%);
+  padding-block:44px 10px;
+  overflow:hidden;
+}
+.hero .wrap{position:relative;z-index:2;}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:7px;
+  background:var(--surface);
+  border:2px solid var(--hibiscus);
+  color:var(--hibiscus-ink);
+  font-weight:700;font-size:12px;letter-spacing:.08em;text-transform:uppercase;
+  padding:6px 14px;border-radius:99px;
+  box-shadow:0 3px 0 color-mix(in srgb,var(--hibiscus) 40%,transparent);
+}
+.hero h1{
+  font-family:var(--display);
+  font-weight:800;
+  font-size:clamp(36px,10vw,58px);
+  line-height:1.03;
+  letter-spacing:-0.015em;
+  margin:16px 0 6px;
+  text-wrap:balance;
+}
+.hero h1 .pop{
+  background:linear-gradient(92deg,var(--hibiscus-ink),var(--beniimo-ink) 55%,var(--kouri-ink));
+  -webkit-background-clip:text;background-clip:text;
+  color:transparent;
+}
+.hero .sub{
+  margin:0 0 20px;
+  color:var(--muted);
+  font-size:16px;
+  font-weight:600;
+}
+.chips{display:flex;flex-wrap:wrap;gap:9px;}
+.chip{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--surface);
+  border:2px solid var(--c,var(--kouri));
+  color:var(--ci,var(--kouri-ink));
+  border-radius:99px;
+  padding:8px 15px;
+  font-size:13.5px;font-weight:700;
+  box-shadow:0 3px 0 color-mix(in srgb,var(--c,var(--kouri)) 40%,transparent);
+}
+.chip:nth-child(1){--c:var(--mint);--ci:var(--mint-ink);}
+.chip:nth-child(2){--c:var(--kouri);--ci:var(--kouri-ink);}
+.chip:nth-child(3){--c:var(--mango);--ci:var(--mango-ink);}
+.countdown{
+  margin-top:22px;
+  display:inline-flex;align-items:center;gap:12px;
+  background:var(--surface);
+  border:2.5px dashed var(--hibiscus);
+  border-radius:var(--r-md);
+  padding:12px 18px;
+  box-shadow:0 4px 0 color-mix(in srgb,var(--hibiscus) 38%,transparent);
+}
+.countdown .big{
+  font-family:var(--display);font-weight:800;
+  font-size:32px;line-height:1;color:var(--hibiscus-ink);
+  font-variant-numeric:tabular-nums;
+}
+.countdown .lbl{font-size:13px;font-weight:700;color:var(--muted);line-height:1.35;}
+
+/* ---------- Ảnh sticker viền trắng ---------- */
+.hero-grid{display:flex;flex-wrap:wrap;align-items:flex-end;gap:10px 20px;}
+.hero-text{flex:1 1 250px;min-width:0;}
+.photo{
+  flex:0 0 auto;margin-left:auto;position:relative;
+  width:clamp(132px,31vw,190px);
+  transform:rotate(-3deg);
+}
+.photo .frame{
+  position:relative;aspect-ratio:1;overflow:hidden;
+  border-radius:50%;
+  border:7px solid #fff;
+  background:var(--surface-2);
+  box-shadow:
+    0 0 0 3.5px var(--hibiscus),
+    0 9px 0 color-mix(in srgb,var(--hibiscus) 32%,transparent),
+    0 14px 26px rgba(39,69,79,0.18);
+}
+.photo img{
+  display:block;width:100%;height:100%;
+  object-fit:cover;object-position:50% 46%;
+}
+.photo .pin{
+  position:absolute;top:-14px;right:-6px;
+  font-size:30px;transform:rotate(16deg);
+  filter:drop-shadow(0 2px 2px rgba(39,69,79,0.2));
+}
+.photo.sway{animation:sway 6s ease-in-out infinite;}
+@keyframes sway{0%,100%{transform:rotate(-3deg) translateY(0);}50%{transform:rotate(2deg) translateY(-7px);}}
+.photo-foot{
+  width:120px;margin:0 auto 12px;transform:rotate(2deg);
+}
+.photo-foot .frame{border-width:6px;box-shadow:0 0 0 3px var(--kouri),0 7px 0 color-mix(in srgb,var(--kouri) 30%,transparent);}
+.paw{color:var(--hibiscus-ink);opacity:.85;letter-spacing:6px;}
+
+.sticker{
+  position:absolute;font-size:40px;opacity:.9;z-index:1;
+  animation:bob 5s ease-in-out infinite;
+  pointer-events:none;user-select:none;
+}
+.s1{top:18px;right:5%;font-size:26px;}
+.s2{top:150px;right:3%;font-size:22px;animation-delay:-1.6s;}
+.s3{top:74px;right:12%;font-size:20px;animation-delay:-3.1s;}
+@keyframes bob{0%,100%{transform:translateY(0) rotate(-4deg);}50%{transform:translateY(-10px) rotate(5deg);}}
+@media (prefers-reduced-motion:reduce){.sticker,.photo.sway{animation:none;}}
+.wave{display:block;width:100%;height:38px;color:var(--ground);margin-top:12px;}
+
+/* ---------- Tab kiểu app ---------- */
+[hidden]{display:none !important;}
+.daynav{
+  position:sticky;top:0;z-index:30;
+  background:color-mix(in srgb, var(--ground) 92%, transparent);
+  backdrop-filter:blur(10px);
+  border-bottom:2px solid var(--line);
+}
+.daynav-inner{
+  display:flex;gap:8px;overflow-x:auto;
+  padding:11px 18px 13px;
+  -webkit-overflow-scrolling:touch;
+  scrollbar-width:none;
+}
+.daynav-inner::-webkit-scrollbar{display:none;}
+.tab{
+  flex:0 0 auto;white-space:nowrap;cursor:pointer;
+  font-family:var(--body);font-size:13px;font-weight:700;
+  padding:8px 15px;border-radius:99px;
+  background:var(--nb,var(--kouri-soft));
+  color:var(--nc,var(--kouri-ink));
+  border:2px solid transparent;
+  transition:transform .14s ease, box-shadow .14s ease;
+}
+.tab:nth-child(1){--nb:var(--mint-soft);--nc:var(--mint-ink);--np:var(--mint);}
+.tab:nth-child(2){--nb:var(--hibiscus-soft);--nc:var(--hibiscus-ink);--np:var(--hibiscus);}
+.tab:nth-child(3){--nb:var(--kouri-soft);--nc:var(--kouri-ink);--np:var(--kouri);}
+.tab:nth-child(4){--nb:var(--mango-soft);--nc:var(--mango-ink);--np:var(--mango);}
+.tab:nth-child(5){--nb:var(--beniimo-soft);--nc:var(--beniimo-ink);--np:var(--beniimo);}
+.tab:hover{transform:translateY(-1px);}
+.tab[aria-selected="true"]{
+  background:var(--np);
+  color:#fff;
+  box-shadow:0 4px 0 color-mix(in srgb,var(--np) 45%,transparent);
+  transform:translateY(-1px);
+}
+.panel{animation:pop .28s ease both;}
+@keyframes pop{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:none;}}
+@media (prefers-reduced-motion:reduce){.panel{animation:none;}}
+
+/* ---------- Section heads ---------- */
+section{padding-block:34px;}
+.head{margin-bottom:18px;}
+.kicker{
+  font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--accent);margin:0 0 4px;
+}
+.head h2{
+  font-family:var(--display);font-weight:800;
+  font-size:clamp(24px,5.6vw,31px);margin:0;letter-spacing:-0.01em;
+}
+
+/* ---------- Boarding pass ---------- */
+.pass{
+  background:var(--surface);
+  border:2.5px solid var(--kouri);
+  border-radius:var(--r-lg);
+  box-shadow:0 6px 0 color-mix(in srgb,var(--kouri) 45%,transparent);
+  overflow:hidden;
+  margin-bottom:18px;
+}
+.pass-top{
+  background:linear-gradient(100deg,var(--kouri-soft),var(--lemon-soft) 55%,var(--mint-soft));
+  padding:14px 20px;
+  display:flex;align-items:center;justify-content:space-between;gap:10px;
+  font-weight:700;font-size:13px;
+  color:var(--kouri-ink);
+  border-bottom:2.5px dashed var(--kouri);
+}
+.pass-top .tail{color:var(--mint-ink);letter-spacing:.08em;}
+.leg{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:16px 20px;flex-wrap:wrap;}
+.leg + .leg{border-top:2.5px dashed color-mix(in srgb,var(--kouri) 55%,transparent);}
+.leg .route{font-family:var(--display);font-weight:700;font-size:20px;line-height:1.2;}
+.leg .when{color:var(--muted);font-size:13.5px;font-weight:600;font-variant-numeric:tabular-nums;}
+.leg .tag{
+  background:var(--mint-soft);color:var(--mint-ink);
+  font-size:12px;font-weight:700;padding:5px 12px;border-radius:99px;white-space:nowrap;
+  border:2px solid var(--mint);
+}
+.hotel{
+  display:flex;gap:15px;align-items:center;
+  background:var(--surface);
+  border:2.5px solid var(--beniimo);
+  border-radius:var(--r-lg);
+  box-shadow:0 6px 0 color-mix(in srgb,var(--beniimo) 42%,transparent);
+  padding:16px 18px;
+}
+.hotel .tile{
+  flex:0 0 auto;width:64px;height:64px;border-radius:20px;
+  background:linear-gradient(150deg,var(--beniimo-soft),var(--hibiscus-soft));
+  display:grid;place-items:center;font-size:30px;
+}
+.hotel h3{font-family:var(--display);font-weight:700;font-size:17px;margin:0 0 2px;}
+.hotel .addr{margin:0 0 7px;font-size:12.5px;color:var(--muted);font-weight:600;}
+.tiny-note{
+  display:inline-block;font-size:12px;font-weight:700;
+  color:var(--mango-ink);background:var(--mango-soft);
+  padding:4px 11px;border-radius:99px;
+  border:2px solid var(--mango);
+}
+
+/* ---------- Day cards ---------- */
+.day{scroll-margin-top:64px;}
+.daycard{
+  background:var(--surface);
+  border:2.5px solid var(--accent-pop);
+  border-radius:var(--r-lg);
+  box-shadow:0 7px 0 color-mix(in srgb,var(--accent-pop) 45%,transparent);
+  overflow:hidden;
+}
+.daycard.pink{--accent:var(--hibiscus-ink);--accent-pop:var(--hibiscus);--accent-soft:var(--hibiscus-soft);--accent-2:var(--lemon-soft);}
+.daycard.blue{--accent:var(--kouri-ink);--accent-pop:var(--kouri);--accent-soft:var(--kouri-soft);--accent-2:var(--mint-soft);}
+.daycard.sun{--accent:var(--mango-ink);--accent-pop:var(--mango);--accent-soft:var(--mango-soft);--accent-2:var(--lemon-soft);}
+.daycard.plum{--accent:var(--beniimo-ink);--accent-pop:var(--beniimo);--accent-soft:var(--beniimo-soft);--accent-2:var(--hibiscus-soft);}
+.dayhead{
+  background:linear-gradient(105deg,var(--accent-soft),var(--accent-2,var(--accent-soft)));
+  padding:18px 20px;
+  display:flex;align-items:center;gap:14px;
+  border-bottom:2.5px solid var(--accent-pop);
+}
+.daybadge{
+  flex:0 0 auto;width:52px;height:52px;border-radius:18px;
+  background:var(--surface);
+  border:2.5px solid var(--accent-pop);
+  display:grid;place-items:center;text-align:center;line-height:1;
+  box-shadow:0 3px 0 color-mix(in srgb,var(--accent-pop) 45%,transparent);
+}
+.daybadge .n{font-family:var(--display);font-weight:800;font-size:21px;color:var(--accent);}
+.daybadge .d{font-size:9.5px;font-weight:700;letter-spacing:.08em;color:var(--muted);margin-top:2px;}
+.dayhead .meta{font-size:12.5px;font-weight:700;color:var(--accent);}
+.dayhead h3{font-family:var(--display);font-weight:800;font-size:21px;margin:1px 0 0;letter-spacing:-0.01em;}
+.daybody{padding:20px;}
+
+/* ---------- Timeline ---------- */
+.tl{position:relative;padding-left:46px;display:flex;flex-direction:column;gap:16px;}
+.tl::before{
+  content:"";position:absolute;left:17px;top:14px;bottom:14px;
+  border-left:3px dotted var(--accent-pop);
+}
+.stop{position:relative;}
+.stop .dot{
+  position:absolute;left:-46px;top:0;
+  width:36px;height:36px;border-radius:50%;
+  background:var(--surface);
+  border:2.5px solid var(--accent-pop);
+  display:grid;place-items:center;font-size:17px;
+  box-shadow:0 3px 0 color-mix(in srgb,var(--accent-pop) 45%,transparent);
+}
+.stop .time{
+  display:inline-block;
+  font-size:11.5px;font-weight:700;letter-spacing:.03em;
+  color:var(--accent);background:var(--accent-soft);
+  padding:3px 10px;border-radius:99px;margin-bottom:5px;
+  font-variant-numeric:tabular-nums;
+}
+.stop h4{font-family:var(--display);font-weight:700;font-size:16.5px;margin:0 0 3px;line-height:1.3;}
+.stop p{margin:0;font-size:14px;color:var(--muted);font-weight:500;line-height:1.62;}
+.stop p b{color:var(--ink);font-weight:700;}
+
+.note{
+  margin-top:18px;
+  background:var(--surface-2);
+  border:2px solid var(--accent-pop);
+  border-radius:var(--r-md);
+  padding:14px 16px;
+  font-size:13.5px;color:var(--muted);font-weight:600;line-height:1.6;
+}
+.note b{color:var(--ink);}
+.note + .note{margin-top:10px;}
+
+/* ---------- Footer ---------- */
+footer{
+  text-align:center;padding:34px 18px 54px;
+  font-size:12.5px;font-weight:600;color:var(--muted);
+  background:linear-gradient(180deg,transparent,var(--lemon-soft));
+}
+footer .hearts{font-size:20px;letter-spacing:4px;display:block;margin-bottom:8px;}
+
+@media (max-width:430px){
+  .s2{display:none;}
+}
+</style>
+
+<header class="hero">
+  <span class="sticker s1" aria-hidden="true">🐚</span>
+  <span class="sticker s2" aria-hidden="true">🐠</span>
+  <span class="sticker s3" aria-hidden="true">🌴</span>
+  <div class="wrap hero-grid">
+    <div class="hero-text">
+    <span class="eyebrow">🏝️ Du lịch công ty · Okinawa</span>
+    <h1>Bốn ngày ba đêm<br><span class="pop">ở Okinawa</span></h1>
+    <p class="sub">Lịch trình nhỏ xinh của riêng tôi · 2026</p>
+    <div class="chips">
+      <span class="chip">📅 19/9 → 22/9</span>
+      <span class="chip">✈️ FD230 / FD231</span>
+      <span class="chip">🏨 Naha Kokusai-dori</span>
+    </div>
+    <div class="countdown">
+      <span class="big" id="cd-num">5</span>
+      <span class="lbl" id="cd-txt">ngày nữa<br>là được đi rồi!</span>
+    </div>
+    </div>
+    <div class="photo sway">
+      <div class="frame"><img src="anh-cung-nhau.jpg" alt="Hai chị em chụp chung trong chuyến đi"></div>
+      <span class="pin" aria-hidden="true">🌺</span>
+    </div>
+  </div>
+  <svg class="wave" viewBox="0 0 1200 40" preserveAspectRatio="none" aria-hidden="true">
+    <path fill="currentColor" d="M0,22 C150,44 250,2 400,20 C550,38 650,4 800,20 C950,36 1060,8 1200,22 L1200,40 L0,40 Z"></path>
+  </svg>
+</header>
+
+<nav class="daynav">
+  <div class="daynav-inner" role="tablist" aria-label="Các phần của chuyến đi">
+    <button class="tab" type="button" role="tab" id="tab-flights" aria-controls="flights" aria-selected="true">✈️ Chuyến bay</button>
+    <button class="tab" type="button" role="tab" id="tab-d1" aria-controls="d1" aria-selected="false">🌺 Ngày 1</button>
+    <button class="tab" type="button" role="tab" id="tab-d2" aria-controls="d2" aria-selected="false">🚗 Ngày 2</button>
+    <button class="tab" type="button" role="tab" id="tab-d3" aria-controls="d3" aria-selected="false">🐋 Ngày 3</button>
+    <button class="tab" type="button" role="tab" id="tab-d4" aria-controls="d4" aria-selected="false">🧳 Ngày 4</button>
+  </div>
+</nav>
+
+<section id="flights" class="wrap panel" role="tabpanel" aria-labelledby="tab-flights">
+  <div class="head">
+    <p class="kicker">Vé máy bay &amp; chỗ ở</p>
+    <h2>Bay đi, bay về ✈️</h2>
+  </div>
+
+  <div class="pass">
+    <div class="pass-top">
+      <span>🎫 BOARDING PASS</span>
+      <span class="tail">AIR ASIA · 20KG</span>
+    </div>
+    <div class="leg">
+      <div>
+        <div class="route">Đào Viên → Naha</div>
+        <div class="when">FD230 · Thứ Bảy 19/9 · 13:30 → 15:55</div>
+      </div>
+      <span class="tag">Ký gửi 20kg</span>
+    </div>
+    <div class="leg">
+      <div>
+        <div class="route">Naha → Đào Viên</div>
+        <div class="when">FD231 · Thứ Ba 22/9 · cất cánh 16:55</div>
+      </div>
+      <span class="tag">Ký gửi 20kg</span>
+    </div>
+  </div>
+
+  <div class="hotel">
+    <div class="tile" aria-hidden="true">🏨</div>
+    <div>
+      <h3>HOTEL LANTANA Naha Kokusai-dori</h3>
+      <p class="addr">〒900-0014 沖縄県那覇市松尾2丁目8-1</p>
+      <span class="tiny-note">🍳 Bao gồm ăn sáng × 3 ngày</span>
+    </div>
+  </div>
+</section>
+
+<section id="d1" class="day wrap panel" role="tabpanel" aria-labelledby="tab-d1" hidden>
+  <div class="daycard pink">
+    <div class="dayhead">
+      <div class="daybadge"><span class="n">1</span><span class="d">19/9</span></div>
+      <div>
+        <div class="meta">Thứ Bảy</div>
+        <h3>Ngày đến 🌺</h3>
+      </div>
+    </div>
+    <div class="daybody">
+      <div class="tl">
+        <div class="stop">
+          <div class="dot" aria-hidden="true">✈️</div>
+          <span class="time">13:30 → 15:55</span>
+          <h4>FD230 hạ cánh Naha</h4>
+          <p>Cất cánh từ Đào Viên, Terminal 1. Có mặt làm thủ tục trước 11:00 (2.5 tiếng trước giờ bay).</p>
+        </div>
+        <div class="stop">
+          <div class="dot" aria-hidden="true">🚝</div>
+          <span class="time">Sau khi đến</span>
+          <h4>Sân bay → khách sạn</h4>
+          <p>Đi Yui Rail (đơn quỹ đạo) từ ga Naha Airport đến ga Asahibashi, sau đó đi bộ khoảng 10 phút tới khách sạn.</p>
+        </div>
+        <div class="stop">
+          <div class="dot" aria-hidden="true">🔑</div>
+          <span class="time">15:00~</span>
+          <h4>Check-in khách sạn</h4>
+          <p>HOTEL LANTANA Naha Kokusai-dori. Tự check-in vào thời gian thuận tiện, không cần tập trung chung.</p>
+        </div>
+        <div class="stop">
+          <div class="dot" aria-hidden="true">⛩️</div>
+          <span class="time">~16:00</span>
+          <h4>Đền Naminoue (波上宮)</h4>
+          <p>Ngôi đền đứng đầu trong "Ryukyu Hassha" (8 đền quan trọng nhất vương quốc Ryukyu xưa) — xây trên vách đá san hô, view ngay ra biển. Ngay cạnh có bãi biển Naminoue nhỏ, đi dạo ngắm hoàng hôn rất hợp lúc chiều muộn. Cách khách sạn khoảng 1.5km — đi bộ ~20 phút hoặc taxi 5–7 phút. Tham quan tầm 45 phút–1 tiếng là đủ, còn kịp về thay đồ trước giờ ăn tối.</p>
+        </div>
+        <div class="stop">
+          <div class="dot" aria-hidden="true">🍶</div>
+          <span class="time">19:00</span>
+          <h4>Ăn tối izakaya cùng đoàn</h4>
+          <p>島唄 Live 屋台村 Ashibina — có nhạc sống trực tiếp + 2 tiếng uống thả ga.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="d2" class="day wrap panel" role="tabpanel" aria-labelledby="tab-d2" hidden>
+  <div class="daycard blue">
+    <div class="dayhead">
+      <div class="daybadge"><span class="n">2</span><span class="d">20/9</span></div>
+      <div>
+        <div class="meta">Chủ Nhật · ngày tự do</div>
+        <h3>Shuri &amp; Umikaji 🚗</h3>
+      </div>
+    </div>
+    <div class="daybody">
+      <div class="tl">
+        <div class="stop">
+          <div class="dot" aria-hidden="true">🏯</div>
+          <span class="time">09:00</span>
+          <h4>Lâu đài Shuri</h4>
+          <p>Xuất phát sớm để đỡ đông — biểu tượng lịch sử vương quốc Ryukyu, cổng thành đỏ son đặc trưng. Tham quan khoảng 1–1.5 tiếng. Cách Naha ~15 phút lái xe.</p>
+        </div>
+        <div class="stop">
+          <div class="dot" aria-hidden="true">🍽️</div>
+          <span class="time">11:00</span>
+          <h4>Ăn trưa tự túc</h4>
+          <p>Khu quanh Shuri hoặc quay lại phía Naha — nhiều lựa chọn cơm trưa nhẹ trước khi đi tiếp buổi chiều.</p>
+        </div>
+        <div class="stop">
+          <div class="dot" aria-hidden="true">🦇</div>
+          <span class="time">13:30 · tùy chọn</span>
+          <h4>Động Gyokusendo (khá xa)</h4>
+          <p>Hang thạch nhũ dài 5km, một trong những hang lớn nhất Nhật Bản — nhưng cách Naha khoảng 1 tiếng lái xe mỗi chiều, nên cân nhắc bỏ qua nếu muốn thong thả hơn buổi chiều.</p>
+        </div>
+        <div class="stop">
+          <div class="dot" aria-hidden="true">🛩️</div>
+          <span class="time">16:00–18:00</span>
+          <h4>Umikaji Terrace, đảo Senaga</h4>
+          <p>Khu thương mại ven biển phong cách Địa Trung Hải, ngắm máy bay hạ cánh thấp — đẹp nhất lúc chiều tà. Cách Naha ~15–20 phút lái xe, gần sân bay.</p>
+        </div>
+        <div class="stop">
+          <div class="dot" aria-hidden="true">🛒</div>
+          <span class="time">~18:15</span>
+          <h4>Ghé AEON Naha (Oroku)</h4>
+          <p>Chi nhánh AEON ở khu Oroku (金城5-10-2), chỉ cách Umikaji Terrace/Senaga khoảng 5–10 phút lái xe — tiện đường trước khi quay lại trung tâm Naha. Là AEON kiểu siêu thị tổng hợp (GMS): quần áo, mỹ phẩm, đồ gia dụng, khu thuốc (vitamin, thuốc đau đầu, thuốc nhỏ mắt) — mở tới 22:00–23:00 tùy khu.</p>
+        </div>
+        <div class="stop">
+          <div class="dot" aria-hidden="true">🐟</div>
+          <span class="time">20:30</span>
+          <h4>Ăn tối: sashimi kiểu địa phương</h4>
+          <p><b>Maasan no Ie (まーさんの家)</b> trên Kokusai-dori — nổi tiếng với đĩa sashimi thập cẩm "shima-zashi-mori" (刺し盛り) tươi, quán đông khách địa phương, không gian đúng chất izakaya Okinawa.</p>
+        </div>
+      </div>
+      <div class="note">
+        <b>🚙 Xe thuê:</b> nhớ mang bằng lái quốc tế (IDP) hoặc bằng lái tiếng Nhật hợp lệ, đặt xe trước vì mùa cao điểm dễ hết xe. Nên đặt trước ở Naha để lấy xe sáng sớm ngày này rồi trả lại trước khi bay ngày cuối (hoặc giữ xe hết D2 rồi trả).
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="d3" class="day wrap panel" role="tabpanel" aria-labelledby="tab-d3" hidden>
+  <div class="daycard sun">
+    <div class="dayhead">
+      <div class="daybadge"><span class="n">3</span><span class="d">21/9</span></div>
+      <div>
+        <div class="meta">Thứ Hai</div>
+        <h3>Tour xe bus trọn ngày 🐋</h3>
+      </div>
+    </div>
+    <div class="daybody">
+      <div class="tl">
+        <div class="stop">
+          <div class="dot" aria-hidden="true">🚶</div>
+          <span class="time">~08:10</span>
+          <h4>Từ khách sạn ra điểm tập trung</h4>
+          <p>HOTEL LANTANA cách ga <b>Miebashi (美栄橋駅)</b> khoảng 7–9 phút đi bộ. Từ đó đi Yui Rail 1 trạm tới <b>Kencho-mae (県庁前駅)</b> (~2 phút), ga này nối thẳng ra Palette Kumoji. Tổng thời gian tầm 15–18 phút, nên xuất phát khoảng 08:10 cho thong thả.<br><br>Cách khác: đi bộ thẳng dọc Kokusai-dori từ phía khách sạn tới đầu đường phía Kencho-mae, khoảng 15–18 phút (không cần đợi tàu). Hoặc taxi ~5–7 phút, tiện nhất nếu dậy muộn.</p>
+        </div>
+        <div class="stop">
+          <div class="dot" aria-hidden="true">🚌</div>
+          <span class="time">08:30 tập trung · 08:45 khởi hành</span>
+          <h4>Điểm hẹn: Palette Kumoji</h4>
+          <p>Trước cửa Nippon Rent-A-Car Kenchō-mae — đứng chờ ngoài cửa, không cần vào trong.</p>
+        </div>
+        <div class="stop">
+          <div class="dot" aria-hidden="true">🦈</div>
+          <span class="time">2 tiếng 30 phút</span>
+          <h4>Thủy cung Churaumi</h4>
+          <p>Một trong những thủy cung lớn nhất thế giới, nổi tiếng với bể Kuroshio khổng lồ có cá mập voi. Ăn trưa tự túc trong 150 phút tự do.</p>
+        </div>
+        <div class="stop">
+          <div class="dot" aria-hidden="true">💙</div>
+          <span class="time">20 phút</span>
+          <h4>Bãi biển Kouri</h4>
+          <p>Đảo của thần thoại Okinawa, nổi tiếng với sắc xanh "Kouri Blue" và tảng đá hình trái tim.</p>
+        </div>
+        <div class="stop">
+          <div class="dot" aria-hidden="true">🍠</div>
+          <span class="time">20 phút</span>
+          <h4>Okashigoten (chi nhánh Onna)</h4>
+          <p>Tiệm quà nổi tiếng nhất Okinawa — bánh tart khoai lang tím là món phải mua.</p>
+        </div>
+        <div class="stop">
+          <div class="dot" aria-hidden="true">🌿</div>
+          <span class="time">20 phút</span>
+          <h4>Manzamo</h4>
+          <p>Vách đá san hô hình vòi voi vươn ra biển. Vé vào 100 yên/người, tự chuẩn bị tiền mặt.</p>
+        </div>
+        <div class="stop">
+          <div class="dot" aria-hidden="true">🎡</div>
+          <span class="time">50 phút</span>
+          <h4>American Village</h4>
+          <p>Khu mua sắm giải trí phong cách Mỹ — nhà hàng, thời trang, đồ lưu niệm.</p>
+        </div>
+        <div class="stop">
+          <div class="dot" aria-hidden="true">🔙</div>
+          <span class="time">19:25</span>
+          <h4>Về lại Palette Kumoji</h4>
+          <p>Kết thúc tour, tự do buổi tối ở Kokusai-dori.</p>
+        </div>
+      </div>
+      <div class="note">
+        <b>✅ Bao gồm:</b> vé thủy cung, hệ thống audio thuyết minh, xe đưa đón, bảo hiểm, tai nghe.
+      </div>
+      <div class="note">
+        <b>❌ Không bao gồm:</b> vé Manzamo (100 yên), ăn uống, chi tiêu cá nhân, hướng dẫn tiếng Trung, wifi trên xe.
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="d4" class="day wrap panel" role="tabpanel" aria-labelledby="tab-d4" hidden>
+  <div class="daycard plum">
+    <div class="dayhead">
+      <div class="daybadge"><span class="n">4</span><span class="d">22/9</span></div>
+      <div>
+        <div class="meta">Thứ Ba</div>
+        <h3>Ngày về nước 🧳</h3>
+      </div>
+    </div>
+    <div class="daybody">
+      <div class="tl">
+        <div class="stop">
+          <div class="dot" aria-hidden="true">🛎️</div>
+          <span class="time">Trước 11:00</span>
+          <h4>Check-out khách sạn</h4>
+          <p>Gửi hành lý ở quầy lễ tân rồi đi chơi tiếp cho nhẹ người.</p>
+        </div>
+        <div class="stop">
+          <div class="dot" aria-hidden="true">🛍️</div>
+          <span class="time">Buổi sáng</span>
+          <h4>Tự do mua sắm</h4>
+          <p>Tranh thủ ghé lại Kokusai-dori mua nốt quà lưu niệm còn thiếu.</p>
+        </div>
+        <div class="stop">
+          <div class="dot" aria-hidden="true">✈️</div>
+          <span class="time">16:55</span>
+          <h4>FD231 cất cánh về Đào Viên</h4>
+          <p>Có mặt làm thủ tục tại sân bay trước 14:25 (2.5 tiếng trước giờ bay).</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="photo photo-foot">
+    <div class="frame"><img src="anh-cung-nhau.jpg" alt=""></div>
+  </div>
+  <span class="hearts paw" aria-hidden="true">🌺 🌴 🐚</span>
+  Lịch trình cá nhân · Okinawa 19–22/9/2026
+</footer>
+
+<script>
+(function(){
+  // Đếm ngược tới ngày bay
+  var dep = new Date(2026, 8, 19, 13, 30);
+  var num = document.getElementById('cd-num');
+  var txt = document.getElementById('cd-txt');
+  var diff = dep - new Date();
+  var days = Math.ceil(diff / 86400000);
+  if (diff <= 0 && diff > -4 * 86400000){
+    num.textContent = '🏝️';
+    txt.innerHTML = 'Đang ở Okinawa<br>rồi nè!';
+  } else if (diff <= 0){
+    num.textContent = '💗';
+    txt.innerHTML = 'Chuyến đi đã xong<br>— nhớ ghê!';
+  } else {
+    num.textContent = days;
+    txt.innerHTML = 'ngày nữa<br>là được đi rồi!';
+  }
+
+  // Tab: bấm tab nào hiện đúng phần đó
+  var tabs = Array.prototype.slice.call(document.querySelectorAll('.tab'));
+  var nav = document.querySelector('.daynav');
+
+  function show(id, scroll){
+    tabs.forEach(function(t){
+      var on = t.getAttribute('aria-controls') === id;
+      t.setAttribute('aria-selected', on ? 'true' : 'false');
+      var panel = document.getElementById(t.getAttribute('aria-controls'));
+      if (panel){
+        panel.hidden = !on;
+        if (on){ panel.classList.remove('panel'); void panel.offsetWidth; panel.classList.add('panel'); }
+      }
+      if (on) t.scrollIntoView({block:'nearest', inline:'nearest'});
+    });
+    try { localStorage.setItem('okinawa2026-tab', id); } catch(e){}
+    if (scroll){
+      var y = nav.getBoundingClientRect().top + window.pageYOffset - 2;
+      if (window.pageYOffset > y) window.scrollTo({top:y, behavior:'smooth'});
+    }
+  }
+
+  tabs.forEach(function(t, i){
+    t.addEventListener('click', function(){ show(t.getAttribute('aria-controls'), true); });
+    t.addEventListener('keydown', function(e){
+      var d = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
+      if (!d) return;
+      e.preventDefault();
+      var n = tabs[(i + d + tabs.length) % tabs.length];
+      n.focus();
+      show(n.getAttribute('aria-controls'), false);
+    });
+  });
+
+  var start = (location.hash || '').replace('#','');
+  if (!start){ try { start = localStorage.getItem('okinawa2026-tab') || ''; } catch(e){} }
+  if (start && document.getElementById(start) && document.getElementById(start).classList.contains('panel')){
+    show(start, false);
+  }
+})();
+</script>
