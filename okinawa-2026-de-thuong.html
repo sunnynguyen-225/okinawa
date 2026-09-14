@@ -192,6 +192,7 @@ body{
 .tab:nth-child(3){--nb:var(--kouri-soft);--nc:var(--kouri-ink);--np:var(--kouri);}
 .tab:nth-child(4){--nb:var(--mango-soft);--nc:var(--mango-ink);--np:var(--mango);}
 .tab:nth-child(5){--nb:var(--beniimo-soft);--nc:var(--beniimo-ink);--np:var(--beniimo);}
+.tab:nth-child(6){--nb:var(--mint-soft);--nc:var(--mint-ink);--np:var(--mint);}
 .tab:hover{transform:translateY(-1px);}
 .tab[aria-selected="true"]{
   background:var(--np);
@@ -333,6 +334,79 @@ section{padding-block:34px;}
 .note b{color:var(--ink);}
 .note + .note{margin-top:10px;}
 
+/* ---------- Địa chỉ + link bản đồ ---------- */
+.stop .map, .hotel .map, .cafe .map{
+  display:inline-flex;align-items:flex-start;gap:7px;
+  margin-top:8px;
+  max-width:100%;
+  font-size:12.5px;font-weight:700;line-height:1.45;
+  color:var(--accent,var(--kouri-ink));
+  background:var(--accent-soft,var(--kouri-soft));
+  border:2px solid color-mix(in srgb, var(--accent-pop,var(--kouri)) 60%, transparent);
+  border-radius:14px;
+  padding:7px 12px;
+  text-decoration:none;
+  transition:transform .14s ease, box-shadow .14s ease;
+}
+.stop .map:hover, .hotel .map:hover, .cafe .map:hover{
+  transform:translateY(-1px);
+  box-shadow:0 3px 0 color-mix(in srgb, var(--accent-pop,var(--kouri)) 45%, transparent);
+}
+.map .pinico{flex:0 0 auto;font-size:13px;line-height:1.35;}
+.map .jp{font-weight:600;word-break:break-word;}
+.map .approx{display:block;font-weight:700;opacity:.75;font-size:11.5px;margin-top:1px;}
+.hotel .map{--accent:var(--beniimo-ink);--accent-soft:var(--beniimo-soft);--accent-pop:var(--beniimo);margin-top:0;margin-bottom:8px;}
+
+/* ---------- Quán cà phê / trà Nhật ---------- */
+.cafelist{display:flex;flex-direction:column;gap:17px;}
+.cafe{
+  background:var(--surface);
+  border:2.5px solid var(--cc);
+  border-radius:var(--r-lg);
+  box-shadow:0 6px 0 color-mix(in srgb, var(--cc) 42%, transparent);
+  overflow:hidden;
+}
+.cafe.c-mint{--cc:var(--mint);--cci:var(--mint-ink);--ccs:var(--mint-soft);}
+.cafe.c-pink{--cc:var(--hibiscus);--cci:var(--hibiscus-ink);--ccs:var(--hibiscus-soft);}
+.cafe.c-sea{--cc:var(--kouri);--cci:var(--kouri-ink);--ccs:var(--kouri-soft);}
+.cafe.c-sun{--cc:var(--mango);--cci:var(--mango-ink);--ccs:var(--mango-soft);}
+.cafe.c-sky{--cc:var(--beniimo);--cci:var(--beniimo-ink);--ccs:var(--beniimo-soft);}
+.cafe-top{
+  display:flex;gap:13px;align-items:center;
+  padding:14px 17px;
+  background:linear-gradient(100deg, var(--ccs), color-mix(in srgb, var(--ccs) 45%, var(--lemon-soft)));
+  border-bottom:2.5px dashed var(--cc);
+}
+.cafe-emoji{
+  flex:0 0 auto;width:46px;height:46px;border-radius:16px;
+  background:var(--surface);border:2.5px solid var(--cc);
+  display:grid;place-items:center;font-size:22px;
+  box-shadow:0 3px 0 color-mix(in srgb, var(--cc) 42%, transparent);
+}
+.cafe-top h3{font-family:var(--display);font-weight:800;font-size:17px;margin:0;line-height:1.25;}
+.cafe-top .jpname{display:block;font-size:11.5px;font-weight:700;color:var(--cci);margin-top:2px;letter-spacing:.02em;}
+.cafe-body{padding:15px 17px 17px;}
+.cafe-body p{margin:0 0 10px;font-size:14px;color:var(--muted);font-weight:500;line-height:1.62;}
+.cafe-body p b{color:var(--ink);font-weight:700;}
+.facts{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:11px;}
+.fact{
+  font-size:11.5px;font-weight:700;padding:4px 11px;border-radius:99px;
+  background:var(--ccs);color:var(--cci);
+  border:2px solid color-mix(in srgb, var(--cc) 55%, transparent);
+}
+.fact.warn{background:var(--hibiscus-soft);color:var(--hibiscus-ink);border-color:var(--hibiscus);}
+.cafe .map{--accent:var(--cci);--accent-soft:var(--ccs);--accent-pop:var(--cc);margin-top:2px;}
+.cafe-note{
+  margin-top:18px;
+  background:var(--surface-2);
+  border:2px solid var(--mint);
+  border-radius:var(--r-md);
+  padding:14px 16px;
+  font-size:13.5px;color:var(--muted);font-weight:600;line-height:1.65;
+}
+.cafe-note b{color:var(--ink);}
+.cafe-note + .cafe-note{margin-top:10px;}
+
 /* ---------- Footer ---------- */
 footer{
   text-align:center;padding:34px 18px 54px;
@@ -382,6 +456,7 @@ footer .hearts{font-size:20px;letter-spacing:4px;display:block;margin-bottom:8px
     <button class="tab" type="button" role="tab" id="tab-d2" aria-controls="d2" aria-selected="false">🚗 Ngày 2</button>
     <button class="tab" type="button" role="tab" id="tab-d3" aria-controls="d3" aria-selected="false">🐋 Ngày 3</button>
     <button class="tab" type="button" role="tab" id="tab-d4" aria-controls="d4" aria-selected="false">🧳 Ngày 4</button>
+    <button class="tab" type="button" role="tab" id="tab-cafe" aria-controls="cafe" aria-selected="false">🍵 Cà phê matcha</button>
   </div>
 </nav>
 
@@ -417,6 +492,7 @@ footer .hearts{font-size:20px;letter-spacing:4px;display:block;margin-bottom:8px
     <div>
       <h3>HOTEL LANTANA Naha Kokusai-dori</h3>
       <p class="addr">〒900-0014 沖縄県那覇市松尾2丁目8-1</p>
+      <a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=HOTEL%20LANTANA%20Naha%20Kokusai%20dori" target="_blank" rel="noopener"><span class="pinico" aria-hidden="true">📍</span><span class="jp">Mở bản đồ · 松尾2-8-1, Naha</span></a><br>
       <span class="tiny-note">🍳 Bao gồm ăn sáng × 3 ngày</span>
     </div>
   </div>
@@ -438,30 +514,35 @@ footer .hearts{font-size:20px;letter-spacing:4px;display:block;margin-bottom:8px
           <span class="time">13:30 → 15:55</span>
           <h4>FD230 hạ cánh Naha</h4>
           <p>Cất cánh từ Đào Viên, Terminal 1. Có mặt làm thủ tục trước 11:00 (2.5 tiếng trước giờ bay).</p>
+          <a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=%E9%82%A3%E8%A6%87%E7%A9%BA%E6%B8%AF" target="_blank" rel="noopener"><span class="pinico" aria-hidden="true">📍</span><span class="jp">〒901-0142 沖縄県那覇市鏡水150 · Sân bay Naha (那覇空港)</span></a>
         </div>
         <div class="stop">
           <div class="dot" aria-hidden="true">🚝</div>
           <span class="time">Sau khi đến</span>
           <h4>Sân bay → khách sạn</h4>
           <p>Đi Yui Rail (đơn quỹ đạo) từ ga Naha Airport đến ga Asahibashi, sau đó đi bộ khoảng 10 phút tới khách sạn.</p>
+          <a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=%E6%97%AD%E6%A9%8B%E9%A7%85%20%E6%B2%96%E7%B8%84" target="_blank" rel="noopener"><span class="pinico" aria-hidden="true">📍</span><span class="jp">Ga Asahibashi 旭橋駅 · 沖縄県那覇市泉崎1丁目</span></a>
         </div>
         <div class="stop">
           <div class="dot" aria-hidden="true">🔑</div>
           <span class="time">15:00~</span>
           <h4>Check-in khách sạn</h4>
           <p>HOTEL LANTANA Naha Kokusai-dori. Tự check-in vào thời gian thuận tiện, không cần tập trung chung.</p>
+          <a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=HOTEL%20LANTANA%20Naha%20Kokusai%20dori" target="_blank" rel="noopener"><span class="pinico" aria-hidden="true">📍</span><span class="jp">〒900-0014 沖縄県那覇市松尾2-8-1</span></a>
         </div>
         <div class="stop">
           <div class="dot" aria-hidden="true">⛩️</div>
           <span class="time">~16:00</span>
           <h4>Đền Naminoue (波上宮)</h4>
           <p>Ngôi đền đứng đầu trong "Ryukyu Hassha" (8 đền quan trọng nhất vương quốc Ryukyu xưa) — xây trên vách đá san hô, view ngay ra biển. Ngay cạnh có bãi biển Naminoue nhỏ, đi dạo ngắm hoàng hôn rất hợp lúc chiều muộn. Cách khách sạn khoảng 1.5km — đi bộ ~20 phút hoặc taxi 5–7 phút. Tham quan tầm 45 phút–1 tiếng là đủ, còn kịp về thay đồ trước giờ ăn tối.</p>
+          <a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=%E6%B3%A2%E4%B8%8A%E5%AE%AE" target="_blank" rel="noopener"><span class="pinico" aria-hidden="true">📍</span><span class="jp">〒900-0031 沖縄県那覇市若狭1-25-11</span></a>
         </div>
         <div class="stop">
           <div class="dot" aria-hidden="true">🍶</div>
           <span class="time">19:00</span>
           <h4>Ăn tối izakaya cùng đoàn</h4>
           <p>島唄 Live 屋台村 Ashibina — có nhạc sống trực tiếp + 2 tiếng uống thả ga.</p>
+          <a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=%E5%B3%B6%E5%94%84%E3%83%A9%E3%82%A4%E3%83%96%20%E5%B1%8B%E5%8F%B0%E6%9D%91%E3%81%82%E3%81%97%E3%81%B3%E3%81%AA%E3%83%BC%20%E9%82%A3%E8%A6%87" target="_blank" rel="noopener"><span class="pinico" aria-hidden="true">📍</span><span class="jp">沖縄県那覇市牧志3丁目 · khu 国際通り屋台村<span class="approx">Địa chỉ khu phố — bấm để mở đúng quán trên Maps</span></span></a>
         </div>
       </div>
     </div>
@@ -484,6 +565,7 @@ footer .hearts{font-size:20px;letter-spacing:4px;display:block;margin-bottom:8px
           <span class="time">09:00</span>
           <h4>Lâu đài Shuri</h4>
           <p>Xuất phát sớm để đỡ đông — biểu tượng lịch sử vương quốc Ryukyu, cổng thành đỏ son đặc trưng. Tham quan khoảng 1–1.5 tiếng. Cách Naha ~15 phút lái xe.</p>
+          <a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=%E9%A6%96%E9%87%8C%E5%9F%8E%E5%85%AC%E5%9C%92" target="_blank" rel="noopener"><span class="pinico" aria-hidden="true">📍</span><span class="jp">〒903-0815 沖縄県那覇市首里金城町1-2</span></a>
         </div>
         <div class="stop">
           <div class="dot" aria-hidden="true">🍽️</div>
@@ -496,24 +578,28 @@ footer .hearts{font-size:20px;letter-spacing:4px;display:block;margin-bottom:8px
           <span class="time">13:30 · tùy chọn</span>
           <h4>Động Gyokusendo (khá xa)</h4>
           <p>Hang thạch nhũ dài 5km, một trong những hang lớn nhất Nhật Bản — nhưng cách Naha khoảng 1 tiếng lái xe mỗi chiều, nên cân nhắc bỏ qua nếu muốn thong thả hơn buổi chiều.</p>
+          <a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=%E7%8E%89%E6%B3%89%E6%B4%9E%20%E3%81%8A%E3%81%8D%E3%81%AA%E3%82%8F%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89" target="_blank" rel="noopener"><span class="pinico" aria-hidden="true">📍</span><span class="jp">〒901-0616 沖縄県南城市玉城前川1336 · trong Okinawa World</span></a>
         </div>
         <div class="stop">
           <div class="dot" aria-hidden="true">🛩️</div>
           <span class="time">16:00–18:00</span>
           <h4>Umikaji Terrace, đảo Senaga</h4>
           <p>Khu thương mại ven biển phong cách Địa Trung Hải, ngắm máy bay hạ cánh thấp — đẹp nhất lúc chiều tà. Cách Naha ~15–20 phút lái xe, gần sân bay.</p>
+          <a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=%E7%80%AC%E9%95%B7%E5%B3%B6%E3%82%A6%E3%83%9F%E3%82%AB%E3%82%B8%E3%83%86%E3%83%A9%E3%82%B9" target="_blank" rel="noopener"><span class="pinico" aria-hidden="true">📍</span><span class="jp">〒901-0233 沖縄県豊見城市瀬長174-6</span></a>
         </div>
         <div class="stop">
           <div class="dot" aria-hidden="true">🛒</div>
           <span class="time">~18:15</span>
           <h4>Ghé AEON Naha (Oroku)</h4>
           <p>Chi nhánh AEON ở khu Oroku (金城5-10-2), chỉ cách Umikaji Terrace/Senaga khoảng 5–10 phút lái xe — tiện đường trước khi quay lại trung tâm Naha. Là AEON kiểu siêu thị tổng hợp (GMS): quần áo, mỹ phẩm, đồ gia dụng, khu thuốc (vitamin, thuốc đau đầu, thuốc nhỏ mắt) — mở tới 22:00–23:00 tùy khu.</p>
+          <a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=%E3%82%A4%E3%82%AA%E3%83%B3%E9%82%A3%E8%A6%87%E5%BA%97" target="_blank" rel="noopener"><span class="pinico" aria-hidden="true">📍</span><span class="jp">〒901-0155 沖縄県那覇市金城5-10-2</span></a>
         </div>
         <div class="stop">
           <div class="dot" aria-hidden="true">🐟</div>
           <span class="time">20:30</span>
           <h4>Ăn tối: sashimi kiểu địa phương</h4>
           <p><b>Maasan no Ie (まーさんの家)</b> trên Kokusai-dori — nổi tiếng với đĩa sashimi thập cẩm "shima-zashi-mori" (刺し盛り) tươi, quán đông khách địa phương, không gian đúng chất izakaya Okinawa.</p>
+          <a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=%E3%81%BE%E3%83%BC%E3%81%95%E3%82%93%E3%81%AE%E5%AE%B6%20%E9%82%A3%E8%A6%87%20%E5%9B%BD%E9%9A%9B%E9%80%9A%E3%82%8A" target="_blank" rel="noopener"><span class="pinico" aria-hidden="true">📍</span><span class="jp">沖縄県那覇市牧志 · khu 国際通り<span class="approx">Địa chỉ khu phố — bấm để mở đúng quán trên Maps</span></span></a>
         </div>
       </div>
       <div class="note">
@@ -539,48 +625,56 @@ footer .hearts{font-size:20px;letter-spacing:4px;display:block;margin-bottom:8px
           <span class="time">~08:10</span>
           <h4>Từ khách sạn ra điểm tập trung</h4>
           <p>HOTEL LANTANA cách ga <b>Miebashi (美栄橋駅)</b> khoảng 7–9 phút đi bộ. Từ đó đi Yui Rail 1 trạm tới <b>Kencho-mae (県庁前駅)</b> (~2 phút), ga này nối thẳng ra Palette Kumoji. Tổng thời gian tầm 15–18 phút, nên xuất phát khoảng 08:10 cho thong thả.<br><br>Cách khác: đi bộ thẳng dọc Kokusai-dori từ phía khách sạn tới đầu đường phía Kencho-mae, khoảng 15–18 phút (không cần đợi tàu). Hoặc taxi ~5–7 phút, tiện nhất nếu dậy muộn.</p>
+          <a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=%E7%BE%8E%E6%A0%84%E6%A9%8B%E9%A7%85" target="_blank" rel="noopener"><span class="pinico" aria-hidden="true">📍</span><span class="jp">Ga Miebashi 美栄橋駅 · 沖縄県那覇市牧志1丁目</span></a>
         </div>
         <div class="stop">
           <div class="dot" aria-hidden="true">🚌</div>
           <span class="time">08:30 tập trung · 08:45 khởi hành</span>
           <h4>Điểm hẹn: Palette Kumoji</h4>
           <p>Trước cửa Nippon Rent-A-Car Kenchō-mae — đứng chờ ngoài cửa, không cần vào trong.</p>
+          <a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=%E3%83%91%E3%83%AC%E3%83%83%E3%83%88%E3%81%8F%E3%82%82%E3%81%98" target="_blank" rel="noopener"><span class="pinico" aria-hidden="true">📍</span><span class="jp">〒900-0015 沖縄県那覇市久茂地1-1-1 · パレットくもじ</span></a>
         </div>
         <div class="stop">
           <div class="dot" aria-hidden="true">🦈</div>
           <span class="time">2 tiếng 30 phút</span>
           <h4>Thủy cung Churaumi</h4>
           <p>Một trong những thủy cung lớn nhất thế giới, nổi tiếng với bể Kuroshio khổng lồ có cá mập voi. Ăn trưa tự túc trong 150 phút tự do.</p>
+          <a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=%E6%B2%96%E7%B8%84%E7%BE%8E%E3%82%89%E6%B5%B7%E6%B0%B4%E6%97%8F%E9%A4%A8" target="_blank" rel="noopener"><span class="pinico" aria-hidden="true">📍</span><span class="jp">〒905-0206 沖縄県国頭郡本部町石川424</span></a>
         </div>
         <div class="stop">
           <div class="dot" aria-hidden="true">💙</div>
           <span class="time">20 phút</span>
           <h4>Bãi biển Kouri</h4>
           <p>Đảo của thần thoại Okinawa, nổi tiếng với sắc xanh "Kouri Blue" và tảng đá hình trái tim.</p>
+          <a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=%E5%8F%A4%E5%AE%87%E5%88%A9%E3%83%93%E3%83%BC%E3%83%81" target="_blank" rel="noopener"><span class="pinico" aria-hidden="true">📍</span><span class="jp">〒905-0406 沖縄県国頭郡今帰仁村古宇利</span></a>
         </div>
         <div class="stop">
           <div class="dot" aria-hidden="true">🍠</div>
           <span class="time">20 phút</span>
           <h4>Okashigoten (chi nhánh Onna)</h4>
           <p>Tiệm quà nổi tiếng nhất Okinawa — bánh tart khoai lang tím là món phải mua.</p>
+          <a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=%E5%BE%A1%E8%8F%93%E5%AD%90%E5%BE%A1%E6%AE%BF%20%E6%81%A9%E7%B4%8D%E5%BA%97" target="_blank" rel="noopener"><span class="pinico" aria-hidden="true">📍</span><span class="jp">〒904-0414 沖縄県国頭郡恩納村瀬良垣100</span></a>
         </div>
         <div class="stop">
           <div class="dot" aria-hidden="true">🌿</div>
           <span class="time">20 phút</span>
           <h4>Manzamo</h4>
           <p>Vách đá san hô hình vòi voi vươn ra biển. Vé vào 100 yên/người, tự chuẩn bị tiền mặt.</p>
+          <a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=%E4%B8%87%E5%BA%A7%E6%AF%9B" target="_blank" rel="noopener"><span class="pinico" aria-hidden="true">📍</span><span class="jp">〒904-0411 沖縄県国頭郡恩納村恩納2020-1</span></a>
         </div>
         <div class="stop">
           <div class="dot" aria-hidden="true">🎡</div>
           <span class="time">50 phút</span>
           <h4>American Village</h4>
           <p>Khu mua sắm giải trí phong cách Mỹ — nhà hàng, thời trang, đồ lưu niệm.</p>
+          <a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=%E3%82%A2%E3%83%A1%E3%83%AA%E3%82%AB%E3%83%B3%E3%83%93%E3%83%AC%E3%83%83%E3%82%B8%20%E5%8C%97%E8%B0%B7" target="_blank" rel="noopener"><span class="pinico" aria-hidden="true">📍</span><span class="jp">〒904-0115 沖縄県中頭郡北谷町美浜15-69</span></a>
         </div>
         <div class="stop">
           <div class="dot" aria-hidden="true">🔙</div>
           <span class="time">19:25</span>
           <h4>Về lại Palette Kumoji</h4>
           <p>Kết thúc tour, tự do buổi tối ở Kokusai-dori.</p>
+          <a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=%E3%83%91%E3%83%AC%E3%83%83%E3%83%88%E3%81%8F%E3%82%82%E3%81%98" target="_blank" rel="noopener"><span class="pinico" aria-hidden="true">📍</span><span class="jp">〒900-0015 沖縄県那覇市久茂地1-1-1 · パレットくもじ</span></a>
         </div>
       </div>
       <div class="note">
@@ -609,21 +703,134 @@ footer .hearts{font-size:20px;letter-spacing:4px;display:block;margin-bottom:8px
           <span class="time">Trước 11:00</span>
           <h4>Check-out khách sạn</h4>
           <p>Gửi hành lý ở quầy lễ tân rồi đi chơi tiếp cho nhẹ người.</p>
+          <a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=HOTEL%20LANTANA%20Naha%20Kokusai%20dori" target="_blank" rel="noopener"><span class="pinico" aria-hidden="true">📍</span><span class="jp">〒900-0014 沖縄県那覇市松尾2-8-1</span></a>
         </div>
         <div class="stop">
           <div class="dot" aria-hidden="true">🛍️</div>
           <span class="time">Buổi sáng</span>
           <h4>Tự do mua sắm</h4>
           <p>Tranh thủ ghé lại Kokusai-dori mua nốt quà lưu niệm còn thiếu.</p>
+          <a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=%E5%9B%BD%E9%9A%9B%E9%80%9A%E3%82%8A%20%E9%82%A3%E8%A6%87" target="_blank" rel="noopener"><span class="pinico" aria-hidden="true">📍</span><span class="jp">国際通り · 沖縄県那覇市牧志 (kéo dài ~1.6km)</span></a>
         </div>
         <div class="stop">
           <div class="dot" aria-hidden="true">✈️</div>
           <span class="time">16:55</span>
           <h4>FD231 cất cánh về Đào Viên</h4>
           <p>Có mặt làm thủ tục tại sân bay trước 14:25 (2.5 tiếng trước giờ bay).</p>
+          <a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=%E9%82%A3%E8%A6%87%E7%A9%BA%E6%B8%AF" target="_blank" rel="noopener"><span class="pinico" aria-hidden="true">📍</span><span class="jp">〒901-0142 沖縄県那覇市鏡水150 · Sân bay Naha (那覇空港)</span></a>
         </div>
       </div>
     </div>
+  </div>
+</section>
+
+<section id="cafe" class="wrap panel" role="tabpanel" aria-labelledby="tab-cafe" hidden>
+  <div class="head">
+    <p class="kicker">Nghỉ chân &amp; sống ảo</p>
+    <h2>Quán matcha nhất định phải ghé 🍵</h2>
+  </div>
+
+  <div class="cafelist">
+    <article class="cafe c-mint">
+      <div class="cafe-top">
+        <div class="cafe-emoji" aria-hidden="true">🍵</div>
+        <div>
+          <h3>USUMASA SUNNYDAY</h3>
+          <span class="jpname">うすまさ サニーデイ · 国際通り</span>
+        </div>
+      </div>
+      <div class="cafe-body">
+        <div class="facts">
+        <span class="fact">🚶 1 phút từ khách sạn</span>
+        <span class="fact">🕙 10:00–24:00 · mở cả tuần</span>
+        <span class="fact">🍦 Matcha đường đen</span>
+        </div>
+        <p>Ngay trên Kokusai-dori, <b>sát cạnh khách sạn</b> (mình ở 松尾2-8-1, quán ở 松尾2-8-8 — đi bộ đúng một phút). Món ruột là <b>matcha kokutou latte</b> — matcha đánh cùng đường đen Okinawa, vị đậm mà không gắt, thêm kem tươi khoai lang tím tạo hai tầng màu tím–xanh rất lên hình. Mở tới nửa đêm nên đi ăn izakaya về vẫn kịp ghé.</p>
+        <a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=USUMASA%20SUNNYDAY%20%E9%82%A3%E8%A6%87%20%E6%9D%BE%E5%B0%BE" target="_blank" rel="noopener"><span class="pinico" aria-hidden="true">📍</span><span class="jp">〒900-0014 沖縄県那覇市松尾2-8-8</span></a>
+      </div>
+    </article>
+    <article class="cafe c-pink">
+      <div class="cafe-top">
+        <div class="cafe-emoji" aria-hidden="true">🍡</div>
+        <div>
+          <h3>24-12 GREENTEA STAND</h3>
+          <span class="jpname">24’12 GREENTEA STAND OKINAWA · 壺屋</span>
+        </div>
+      </div>
+      <div class="cafe-body">
+        <div class="facts">
+        <span class="fact">🚶 ~12 phút từ khách sạn</span>
+        <span class="fact">🕥 10:30–16:00 · nghỉ thứ Tư</span>
+        <span class="fact">🌸 Wagashi theo mùa</span>
+        </div>
+        <p>Quán <b>đậm chất Nhật nhất</b> trong danh sách: trà pha bằng ấm kyusu, lá trà hữu cơ, ăn kèm <b>上生菓子 (jounamagashi)</b> — bánh wagashi nặn tay đổi mẫu theo mùa, tháng 9 thường là mẫu hoa cúc / lá phong. Nằm nép trong khu phố gốm <b>Tsuboya Yachimun-dori</b>, tường gỗ mộc, bát đĩa gốm Okinawa — combo trà xanh + bánh + chén gốm lên ảnh rất nghệ. Cuối tuần có thêm ca tối 17:00–20:00. Giờ mở hay đổi, nên xem Instagram <b>@24_12.jp</b> trước khi đi.</p>
+        <a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=24-12%20%E3%82%B0%E3%83%AA%E3%83%BC%E3%83%B3%E3%83%86%E3%82%A3%E3%83%BC%E3%82%B9%E3%82%BF%E3%83%B3%E3%83%89%20%E9%82%A3%E8%A6%87%20%E5%A3%BA%E5%B1%8B" target="_blank" rel="noopener"><span class="pinico" aria-hidden="true">📍</span><span class="jp">〒902-0065 沖縄県那覇市壺屋2-24-12</span></a>
+      </div>
+    </article>
+    <article class="cafe c-sea">
+      <div class="cafe-top">
+        <div class="cafe-emoji" aria-hidden="true">🫖</div>
+        <div>
+          <h3>OKINAWA TEA STAND -Sunpin-</h3>
+          <span class="jpname">沖縄ティースタンド · 松尾</span>
+        </div>
+      </div>
+      <div class="cafe-body">
+        <div class="facts">
+        <span class="fact">🚶 3–4 phút từ khách sạn</span>
+        <span class="fact">🕙 10:00–18:00 (LO 17:30) · nghỉ thứ Tư</span>
+        <span class="fact">🍃 Trà sanpin đặc sản</span>
+        </div>
+        <p>Tiệm trà nhỏ xinh chuyên <b>sanpin-cha</b> (trà nhài kiểu Okinawa) — thứ trà bản địa mà cả đảo uống hằng ngày, pha kiểu specialty như cà phê. Ngoài sanpin còn có matcha latte và trà lạnh cold-brew. Không gian gỗ sáng, ly giấy thiết kế đẹp, rất hợp <b>cầm ly đi dạo Kokusai-dori</b> chụp hình. Quán nhỏ, chỗ ngồi ít.</p>
+        <a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=OKINAWA%20TEA%20STAND%20Sunpin%20%E9%82%A3%E8%A6%87" target="_blank" rel="noopener"><span class="pinico" aria-hidden="true">📍</span><span class="jp">〒900-0014 沖縄県那覇市松尾2-11-11</span></a>
+      </div>
+    </article>
+    <article class="cafe c-sun">
+      <div class="cafe-top">
+        <div class="cafe-emoji" aria-hidden="true">🫧</div>
+        <div>
+          <h3>Bukubuku-chaya Kariyushanbou</h3>
+          <span class="jpname">ぶくぶく茶屋 嘉例山房 · 首里</span>
+        </div>
+      </div>
+      <div class="cafe-body">
+        <div class="facts">
+        <span class="fact">🏯 3 phút đi bộ từ Shureimon</span>
+        <span class="fact">🕙 10:00–18:00 (LO 17:30)</span>
+        <span class="fact warn">🚫 Nghỉ thứ Ba & thứ Tư</span>
+        </div>
+        <p>Trà quán cổ ngay dưới chân <b>lâu đài Shuri</b> — ghép thẳng vào lịch sáng Chủ Nhật 20/9 là chuẩn bài. Đặc sản là <b>ぶくぶく茶 (bukubuku-cha)</b>: trà của vương triều Ryukyu, đánh bọt gạo trắng xốp cao ngồn ngộn phủ trên chén trà, rắc đậu phộng giã — bê ra là phải chụp ngay trước khi bọt xẹp. Nhà gỗ kiểu cũ, sân vườn, ngồi chiếu tatami. <b>Nhớ tránh thứ Ba</b> — đúng ngày về của mình thì quán đóng cửa.</p>
+        <a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=%E3%81%B6%E3%81%8F%E3%81%B6%E3%81%8F%E8%8C%B6%E5%B1%8B%20%E5%98%89%E4%BE%8B%E5%B1%B1%E6%88%BF%20%E9%A6%96%E9%87%8C" target="_blank" rel="noopener"><span class="pinico" aria-hidden="true">📍</span><span class="jp">〒903-0814 沖縄県那覇市首里池端町9</span></a>
+      </div>
+    </article>
+    <article class="cafe c-sky">
+      <div class="cafe-top">
+        <div class="cafe-emoji" aria-hidden="true">🍧</div>
+        <div>
+          <h3>nana's green tea</h3>
+          <span class="jpname">ナナズグリーンティー · PARCO CITY 3F</span>
+        </div>
+      </div>
+      <div class="cafe-body">
+        <div class="facts">
+        <span class="fact">🚗 ~15 phút lái xe từ Naha</span>
+        <span class="fact">🍵 Parfait matcha, warabimochi</span>
+        <span class="fact">🛍️ Trong TTTM lớn nhất Okinawa</span>
+        </div>
+        <p>Chuỗi <b>wa-café</b> quốc dân của Nhật, nội thất gỗ–giấy washi tối giản rất "Kyoto". Đi là gọi <b>parfait matcha</b> (kem matcha, warabimochi, đậu đỏ, bánh dango xếp tầng trong ly cao) hoặc matcha latte đặc. Nằm tầng 3 PARCO CITY ở Urasoe — <b>chỉ tiện ngày 2 khi có xe thuê</b>, hoặc để dành nếu trời mưa vì có thể trốn cả buổi trong mall.</p>
+        <a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=nana%27s%20green%20tea%20%E6%B2%96%E7%B8%84%E3%83%91%E3%83%AB%E3%82%B3%E3%82%B7%E3%83%86%E3%82%A3%E5%BA%97" target="_blank" rel="noopener"><span class="pinico" aria-hidden="true">📍</span><span class="jp">〒901-2123 沖縄県浦添市西洲3-1-1 PARCO CITY 3F</span></a>
+      </div>
+    </article>
+  </div>
+
+  <div class="cafe-note">
+    <b>🗓️ Ghép vào lịch thế nào:</b><br>
+    · <b>CN 20/9</b> — xong lâu đài Shuri buổi sáng thì đi bộ 3 phút qua <b>嘉例山房</b> uống bukubuku-cha (hôm đó quán mở). Chiều có xe thì tạt <b>nana's green tea</b> ở PARCO CITY.<br>
+    · <b>T2 21/9</b> — đi tour bus cả ngày, tối về Kokusai-dori vẫn kịp <b>USUMASA</b> vì mở tới 24:00.<br>
+    · <b>T3 22/9</b> — sáng trước khi ra sân bay: <b>OKINAWA TEA STAND</b> (mở 10:00) rồi vòng qua <b>24-12</b> ở Tsuboya. Lưu ý 嘉例山房 nghỉ thứ Ba.
+  </div>
+  <div class="cafe-note">
+    <b>💡 Mẹo nhỏ:</b> matcha ngon ở Okinawa thường là <i>matcha Uji</i> nhập từ Kyoto — muốn đậm vị thì gọi loại <b>「濃い」(koi)</b> hoặc nói <b>"matcha latte, less sugar"</b>. Quán nhỏ kiểu 24-12 hay hết wagashi buổi chiều, đi sớm trước 14:00 cho chắc.
   </div>
 </section>
 
