@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Okinawa 2026 · Lịch trình của tôi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,560;0,9..144,680;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --deep: #0F3E3B;
+    --deep-2: #163f3c;
+    --sand: #F6F0E3;
+    --sand-2: #EFE6D2;
+    --coral: #E2572B;
+    --coral-dim: #c94d25;
+    --aqua: #5FAFA6;
+    --ink: #1C2521;
+    --muted: #5B675F;
+    --line: rgba(15,62,59,0.14);
+    --serif: 'Fraunces', serif;
+    --sans: 'Inter', sans-serif;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--sand);
+    color:var(--ink);
+    font-family:var(--sans);
+    -webkit-font-smoothing:antialiased;
+  }
+  img{max-width:100%;display:block;}
+  a{color:inherit;}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    background:
+      radial-gradient(120% 140% at 15% 0%, rgba(95,175,166,0.35), transparent 55%),
+      radial-gradient(90% 120% at 90% 10%, rgba(226,87,43,0.25), transparent 50%),
+      linear-gradient(180deg, var(--deep), var(--deep-2));
+    color:var(--sand);
+    padding:64px 24px 48px;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero::after{
+    content:"";
+    position:absolute; inset:auto -10% -60% -10%;
+    height:60%;
+    background: radial-gradient(60% 100% at 50% 0%, rgba(246,240,227,0.06), transparent 70%);
+  }
+  .hero-eyebrow{
+    font-size:13px;
+    letter-spacing:0.02em;
+    color:var(--aqua);
+    font-weight:600;
+    margin-bottom:14px;
+  }
+  .hero h1{
+    font-family:var(--serif);
+    font-weight:560;
+    font-size:clamp(36px,9vw,58px);
+    line-height:1.04;
+    margin:0 0 6px;
+    max-width:11ch;
+  }
+  .hero .sub{
+    font-family:var(--serif);
+    font-style:italic;
+    font-weight:400;
+    font-size:clamp(18px,4vw,22px);
+    color:rgba(246,240,227,0.82);
+    margin:0 0 28px;
+  }
+  .hero-meta{
+    display:flex; flex-wrap:wrap; gap:10px;
+  }
+  .hero-chip{
+    border:1px solid rgba(246,240,227,0.28);
+    border-radius:100px;
+    padding:8px 16px;
+    font-size:14px;
+    color:rgba(246,240,227,0.92);
+    display:flex; align-items:center; gap:8px;
+  }
+
+  /* ---------- Day nav ---------- */
+  .daynav{
+    position:sticky; top:0; z-index:20;
+    background:rgba(246,240,227,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+    display:flex; gap:6px;
+    padding:10px 16px;
+    overflow-x:auto;
+    -webkit-overflow-scrolling:touch;
+  }
+  .daynav a{
+    flex:0 0 auto;
+    text-decoration:none;
+    font-size:13.5px;
+    font-weight:600;
+    color:var(--muted);
+    padding:8px 14px;
+    border-radius:100px;
+    white-space:nowrap;
+    border:1px solid transparent;
+  }
+  .daynav a:hover{ color:var(--deep); border-color:var(--line); }
+
+  /* ---------- Sections ---------- */
+  section{ padding:52px 20px; max-width:720px; margin:0 auto; }
+  .section-head{ margin-bottom:26px; }
+  .section-kicker{
+    font-family:var(--serif); font-style:italic; color:var(--coral);
+    font-size:15px; margin:0 0 4px;
+  }
+  .section-head h2{
+    font-family:var(--serif); font-weight:560;
+    font-size:clamp(24px,5vw,32px);
+    margin:0;
+  }
+
+  /* flight / hotel summary card */
+  .stack-card{
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:18px;
+    padding:22px 22px;
+    margin-bottom:14px;
+  }
+  .flight-row{
+    display:flex; justify-content:space-between; align-items:flex-start;
+    gap:16px; padding:14px 0;
+  }
+  .flight-row + .flight-row{ border-top:1px dashed var(--line); }
+  .flight-row .route{ font-family:var(--serif); font-size:20px; font-weight:560; }
+  .flight-row .time{ font-size:15px; color:var(--muted); margin-top:4px; }
+  .flight-row .tag{
+    font-size:12.5px; color:var(--deep); background:var(--sand-2);
+    padding:4px 10px; border-radius:100px; white-space:nowrap;
+  }
+  .hotel-card{ display:flex; gap:16px; align-items:center; }
+  .hotel-card img{ width:96px; height:96px; object-fit:cover; border-radius:14px; flex:0 0 auto;}
+  .hotel-card .name{ font-family:var(--serif); font-weight:560; font-size:18px; margin:0 0 2px;}
+  .hotel-card .addr{ font-size:13.5px; color:var(--muted); margin:0 0 6px; }
+  .pill-note{
+    display:inline-block; font-size:12.5px; color:var(--coral-dim);
+    background:rgba(226,87,43,0.08); padding:3px 10px; border-radius:100px;
+  }
+
+  /* Day timeline */
+  .day{ padding-top:70px; margin-top:-70px; }
+  .day-label{
+    display:flex; align-items:baseline; gap:12px; margin-bottom:4px;
+  }
+  .day-num{ font-family:var(--serif); font-size:15px; color:var(--coral); font-weight:600; }
+  .day-date{ font-size:14px; color:var(--muted); }
+  .day-title{
+    font-family:var(--serif); font-weight:560; font-size:26px; margin:2px 0 22px;
+  }
+
+  .free-flag{
+    display:inline-flex; align-items:center; gap:8px;
+    background:var(--deep); color:var(--sand);
+    padding:8px 16px; border-radius:12px; font-size:14px; margin-bottom:20px;
+  }
+
+  .timeline{ position:relative; padding-left:26px; }
+  .timeline::before{
+    content:""; position:absolute; left:6px; top:6px; bottom:6px;
+    width:1.5px; background:var(--line);
+  }
+  .tl-item{ position:relative; padding-bottom:26px; }
+  .tl-item:last-child{ padding-bottom:0; }
+  .tl-item::before{
+    content:""; position:absolute; left:-26px; top:5px;
+    width:11px; height:11px; border-radius:50%;
+    background:var(--sand); border:2px solid var(--coral);
+  }
+  .tl-time{ font-size:13px; font-weight:600; color:var(--coral-dim); margin-bottom:3px; }
+  .tl-title{ font-weight:600; font-size:16px; margin-bottom:4px; }
+  .tl-body{ font-size:14.5px; color:var(--muted); line-height:1.55; }
+  .tl-body a{ color:var(--deep); text-decoration:underline; text-decoration-color:var(--line); }
+  .tl-img{ margin-top:10px; border-radius:12px; overflow:hidden; max-width:280px; }
+
+  .note-box{
+    margin-top:22px; background:var(--sand-2); border-radius:14px;
+    padding:16px 18px; font-size:14px; color:var(--muted); line-height:1.6;
+  }
+  .note-box b{ color:var(--ink); }
+
+  .alt-plan{
+    margin-top:26px; border:1.5px dashed var(--aqua); border-radius:16px;
+    padding:4px 18px 6px; background:rgba(95,175,166,0.06);
+  }
+  .alt-plan summary{
+    cursor:pointer; list-style:none; padding:14px 0;
+    font-family:var(--serif); font-weight:560; font-size:17px; color:var(--deep);
+    display:flex; align-items:center; gap:8px;
+  }
+  .alt-plan summary::-webkit-details-marker{ display:none; }
+  .alt-plan summary::before{ content:"＋"; color:var(--coral); font-size:16px; }
+  .alt-plan[open] summary::before{ content:"－"; }
+  .alt-plan summary .sub{ font-family:var(--sans); font-weight:400; font-size:13px; color:var(--muted); }
+  .alt-plan .timeline{ padding-bottom:16px; }
+
+  /* alt day background */
+  .day.alt{ background:#fff; margin-left:-20px; margin-right:-20px; padding-left:20px; padding-right:20px; border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+
+  /* attractions grid */
+  .attr-list{ display:grid; gap:14px; }
+  .attr{
+    display:grid; grid-template-columns:auto 1fr; gap:14px;
+    background:#fff; border:1px solid var(--line); border-radius:16px; padding:16px;
+    align-items:start;
+  }
+  .attr .emo{ font-size:26px; line-height:1; padding-top:2px; }
+  .attr h3{ font-family:var(--serif); font-size:17px; margin:0 0 3px; font-weight:560;}
+  .attr .tags{ font-size:12px; color:var(--aqua); font-weight:600; margin-bottom:6px;}
+  .attr p{ font-size:14px; color:var(--muted); margin:0; line-height:1.55;}
+  .attr a{ font-size:13px; color:var(--coral-dim); text-decoration:none; }
+
+  /* souvenirs */
+  .souv-scroller{
+    display:flex; gap:12px; overflow-x:auto; padding-bottom:6px; -webkit-overflow-scrolling:touch;
+    margin:0 -20px; padding-left:20px; padding-right:20px;
+  }
+  .souv-card{
+    flex:0 0 168px; background:#fff; border:1px solid var(--line); border-radius:14px;
+    overflow:hidden;
+  }
+  .souv-card img{ width:100%; height:110px; object-fit:cover; }
+  .souv-card .txt{ padding:10px 12px 14px; }
+  .souv-card h4{ font-size:13.5px; margin:0 0 3px; font-weight:600; }
+  .souv-card p{ font-size:12px; color:var(--muted); margin:0; line-height:1.45; }
+  .souv-group{ margin-bottom:22px; }
+  .souv-group h3{ font-family:var(--serif); font-size:16px; font-weight:560; margin:0 0 10px; color:var(--deep); }
+
+  footer{
+    text-align:center; padding:40px 20px 60px; font-size:12.5px; color:var(--muted);
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-eyebrow">DU LỊCH CÔNG TY · OKINAWA</div>
+  <h1>Bốn ngày<br>ba đêm ở Okinawa</h1>
+  <p class="sub">Lịch trình riêng của tôi — 2026</p>
+  <div class="hero-meta">
+    <div class="hero-chip">📅 19/9 (Bảy) — 22/9 (Ba)</div>
+    <div class="hero-chip">✈️ FD230 / FD231</div>
+    <div class="hero-chip">🏨 Naha Kokusai-dori</div>
+  </div>
+</header>
+
+<nav class="daynav">
+  <a href="#flights">Chuyến bay</a>
+  <a href="#d1">D1 Đến nơi</a>
+  <a href="#d2">D2 Tự do</a>
+  <a href="#d3">D3 Tour bus</a>
+  <a href="#d4">D4 Về nước</a>
+  <a href="#attractions">Địa điểm</a>
+  <a href="#souvenirs">Quà lưu niệm</a>
+</nav>
+
+<section id="flights">
+  <div class="section-head">
+    <p class="section-kicker">Vé máy bay</p>
+    <h2>Chuyến đi &amp; chuyến về</h2>
+  </div>
+  <div class="stack-card">
+    <div class="flight-row">
+      <div>
+        <div class="route">Đào Viên → Naha</div>
+        <div class="time">FD230 · Thứ Bảy 19/9 · 13:30 → 15:55</div>
+      </div>
+      <div class="tag">Ký gửi 20kg</div>
+    </div>
+    <div class="flight-row">
+      <div>
+        <div class="route">Naha → Đào Viên</div>
+        <div class="time">FD231 · Thứ Ba 22/9 · cất cánh 16:55</div>
+      </div>
+      <div class="tag">Ký gửi 20kg</div>
+    </div>
+  </div>
+  <div class="stack-card hotel-card">
+    <img src="https://jasmine-chen-voicetube.github.io/2026_okinawa/hotel.jpg" alt="Hotel Lantana">
+    <div>
+      <p class="name">HOTEL LANTANA Naha Kokusai-dori</p>
+      <p class="addr">〒900-0014 沖縄県那覇市松尾2丁目8-1</p>
+      <span class="pill-note">🍳 Bao gồm ăn sáng × 3 ngày</span>
+    </div>
+  </div>
+</section>
+
+<div class="day" id="d1">
+  <section>
+    <div class="day-label"><span class="day-num">NGÀY 1</span><span class="day-date">19/9 · Thứ Bảy</span></div>
+    <h3 class="day-title">Ngày đến</h3>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-time">13:30 → 15:55</div>
+        <div class="tl-title">✈️ FD230 hạ cánh Naha</div>
+        <div class="tl-body">Cất cánh từ Đào Viên, Terminal 1. Có mặt làm thủ tục trước 11:00 (2.5 tiếng trước giờ bay).</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">Sau khi đến</div>
+        <div class="tl-title">🚝 Sân bay → khách sạn</div>
+        <div class="tl-body">Đi Yui Rail (đơn quỹ đạo) từ ga Naha Airport đến ga Asahibashi, sau đó đi bộ khoảng 10 phút tới khách sạn.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">15:00~</div>
+        <div class="tl-title">🏨 Check-in khách sạn</div>
+        <div class="tl-body">HOTEL LANTANA Naha Kokusai-dori. Tự check-in vào thời gian thuận tiện, không cần tập trung chung.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">~16:00</div>
+        <div class="tl-title">⛩️ Đền Naminoue (波上宮)</div>
+        <div class="tl-body">Ngôi đền đứng đầu trong "Ryukyu Hassha" (8 đền quan trọng nhất vương quốc Ryukyu xưa) — xây trên vách đá san hô, view ngay ra biển. Ngay cạnh có bãi biển Naminoue nhỏ, đi dạo ngắm hoàng hôn rất hợp lúc chiều muộn. Cách khách sạn khoảng 1.5km — đi bộ ~20 phút hoặc taxi 5–7 phút. Tham quan tầm 45 phút–1 tiếng là đủ, còn kịp về thay đồ trước giờ ăn tối.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">19:00</div>
+        <div class="tl-title">🍶 Ăn tối izakaya cùng đoàn</div>
+        <div class="tl-body">島唄 Live 屋台村 Ashibina — có nhạc sống trực tiếp + 2 tiếng uống thả ga.</div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div class="day alt" id="d2">
+  <section>
+    <div class="day-label"><span class="day-num">NGÀY 2</span><span class="day-date">20/9 · Chủ Nhật</span></div>
+    <h3 class="day-title">Ngày tự do — Shuri &amp; Umikaji Terrace</h3>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-time">09:00</div>
+        <div class="tl-title">🏯 Lâu đài Shuri</div>
+        <div class="tl-body">Xuất phát sớm để đỡ đông — biểu tượng lịch sử vương quốc Ryukyu, cổng thành đỏ son đặc trưng. Tham quan khoảng 1–1.5 tiếng. Cách Naha ~15 phút lái xe.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">11:00</div>
+        <div class="tl-title">🍽️ Ăn trưa tự túc</div>
+        <div class="tl-body">Khu quanh Shuri hoặc quay lại phía Naha — nhiều lựa chọn cơm trưa nhẹ trước khi đi tiếp buổi chiều.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">13:30</div>
+        <div class="tl-title">🦇 Động Gyokusendo (tùy chọn, khá xa)</div>
+        <div class="tl-body">Hang thạch nhũ dài 5km, một trong những hang lớn nhất Nhật Bản — nhưng cách Naha khoảng 1 tiếng lái xe mỗi chiều, nên cân nhắc bỏ qua nếu muốn thong thả hơn buổi chiều.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">16:00–18:00</div>
+        <div class="tl-title">✈️ Umikaji Terrace, đảo Senaga</div>
+        <div class="tl-body">Khu thương mại ven biển phong cách Địa Trung Hải, ngắm máy bay hạ cánh thấp — đẹp nhất lúc chiều tà. Cách Naha ~15–20 phút lái xe, gần sân bay.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">~18:15</div>
+        <div class="tl-title">🛒 Ghé AEON Naha (Oroku)</div>
+        <div class="tl-body">Chi nhánh AEON ở khu Oroku (金城5-10-2), chỉ cách Umikaji Terrace/Senaga khoảng 5–10 phút lái xe — tiện đường trước khi quay lại trung tâm Naha. Là AEON kiểu siêu thị tổng hợp (GMS): quần áo, mỹ phẩm, đồ gia dụng, khu thuốc (vitamin, thuốc đau đầu, thuốc nhỏ mắt) — mở tới 22:00–23:00 tùy khu.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">20:30</div>
+        <div class="tl-title">🐟 Ăn tối: sashimi kiểu địa phương</div>
+        <div class="tl-body"><b>Maasan no Ie (まーさんの家)</b> trên Kokusai-dori — nổi tiếng với đĩa sashimi thập cẩm "shima-zashi-mori" (刺し盛り) tươi, quán đông khách địa phương, không gian đúng chất izakaya Okinawa.</div>
+      </div>
+    </div>
+    <div class="note-box">
+      <b>Xe thuê:</b> nhớ mang bằng lái quốc tế (IDP) hoặc bằng lái tiếng Nhật hợp lệ, đặt xe trước vì mùa cao điểm dễ hết xe. Nên đặt trước ở Naha để lấy xe sáng sớm ngày này rồi trả lại trước khi bay ngày cuối (hoặc giữ xe hết D2 rồi trả).
+    </div>
+  </section>
+</div>
+
+<div class="day" id="d3">
+  <section>
+    <div class="day-label"><span class="day-num">NGÀY 3</span><span class="day-date">21/9 · Thứ Hai</span></div>
+    <h3 class="day-title">Tour xe bus trọn ngày</h3>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-time">~08:10</div>
+        <div class="tl-title">🚶 Từ khách sạn ra điểm tập trung</div>
+        <div class="tl-body">HOTEL LANTANA cách ga <b>Miebashi (美栄橋駅)</b> khoảng 7–9 phút đi bộ. Từ đó đi Yui Rail 1 trạm tới <b>Kencho-mae (県庁前駅)</b> (~2 phút), ga này nối thẳng ra Palette Kumoji. Tổng thời gian tầm 15–18 phút, nên xuất phát khoảng 08:10 cho thong thả.<br><br>Cách khác: đi bộ thẳng dọc Kokusai-dori từ phía khách sạn tới đầu đường phía Kencho-mae, khoảng 15–18 phút (không cần đợi tàu). Hoặc taxi ~5–7 phút, tiện nhất nếu dậy muộn.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">08:30 tập trung · 08:45 khởi hành</div>
+        <div class="tl-title">🚌 Điểm hẹn: Palette Kumoji</div>
+        <div class="tl-body">Trước cửa Nippon Rent-A-Car Kenchō-mae — đứng chờ ngoài cửa, không cần vào trong.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">2 tiếng 30 phút</div>
+        <div class="tl-title">🐋 Thủy cung Churaumi</div>
+        <div class="tl-body">Một trong những thủy cung lớn nhất thế giới, nổi tiếng với bể Kuroshio khổng lồ có cá mập voi. Ăn trưa tự túc trong 150 phút tự do.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">20 phút</div>
+        <div class="tl-title">🏖️ Bãi biển Kouri</div>
+        <div class="tl-body">Đảo của thần thoại Okinawa, nổi tiếng với sắc xanh "Kouri Blue" và tảng đá hình trái tim.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">20 phút</div>
+        <div class="tl-title">🍠 Okashigoten (chi nhánh Onna)</div>
+        <div class="tl-body">Tiệm quà nổi tiếng nhất Okinawa — bánh tart khoai lang tím là món phải mua.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">20 phút</div>
+        <div class="tl-title">🌿 Manzamo</div>
+        <div class="tl-body">Vách đá san hô hình vòi voi vươn ra biển. Vé vào 100 yên/người, tự chuẩn bị tiền mặt.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">50 phút</div>
+        <div class="tl-title">🇺🇸 American Village</div>
+        <div class="tl-body">Khu mua sắm giải trí phong cách Mỹ — nhà hàng, thời trang, đồ lưu niệm.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">19:25</div>
+        <div class="tl-title">🔙 Về lại Palette Kumoji</div>
+      </div>
+    </div>
+    <div class="note-box">
+      <b>Bao gồm:</b> vé thủy cung, hệ thống audio thuyết minh, xe đưa đón, bảo hiểm, tai nghe.<br>
+      <b>Không bao gồm:</b> vé Manzamo (100 yên), ăn uống, chi tiêu cá nhân, hướng dẫn tiếng Trung, wifi trên xe.
+    </div>
+  </section>
+</div>
+
+<div class="day alt" id="d4">
+  <section>
+    <div class="day-label"><span class="day-num">NGÀY 4</span><span class="day-date">22/9 · Thứ Ba</span></div>
+    <h3 class="day-title">Ngày về nước</h3>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-time">Trước 11:00</div>
+        <div class="tl-title">🏨 Check-out khách sạn</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">Buổi sáng</div>
+        <div class="tl-title">🛍️ Tự do mua sắm</div>
+        <div class="tl-body">Tranh thủ ghé lại Kokusai-dori mua nốt quà lưu niệm còn thiếu.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">16:55</div>
+        <div class="tl-title">✈️ FD231 cất cánh về Đào Viên</div>
+        <div class="tl-body">Có mặt làm thủ tục tại sân bay trước 14:25 (2.5 tiếng trước giờ bay).</div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<section id="attractions">
+  <div class="section-head">
+    <p class="section-kicker">Thời gian tự do</p>
+    <h2>Địa điểm gợi ý</h2>
+  </div>
+  <div class="attr-list">
+    <div class="attr">
+      <div class="emo">🕌</div>
+      <div>
+        <h3>Đền Naminoue</h3>
+        <div class="tags">Taxi 10p · Đi bộ 20p</div>
+        <p>Ngôi đền cổ nhất Okinawa, xây trên vách đá san hô nhìn ra biển Naha. Có bãi biển ngay cạnh để thư giãn.</p>
+      </div>
+    </div>
+    <div class="attr">
+      <div class="emo">🏯</div>
+      <div>
+        <h3>Lâu đài Shuri</h3>
+        <div class="tags">Yui Rail 15p · Taxi 15p</div>
+        <p>Biểu tượng lịch sử của vương quốc Ryukyu — cổng thành đỏ son và cung điện mang tính đại diện nhất Okinawa.</p>
+      </div>
+    </div>
+    <div class="attr">
+      <div class="emo">✈️</div>
+      <div>
+        <h3>Umikaji Terrace, đảo Senaga</h3>
+        <div class="tags">Taxi 30p · Nên thuê xe</div>
+        <p>Khu thương mại ven biển phong cách Địa Trung Hải, có thể ngắm máy bay hạ cánh thấp — đẹp nhất lúc chiều tà.</p>
+      </div>
+    </div>
+    <div class="attr">
+      <div class="emo">🦇</div>
+      <div>
+        <h3>Động Gyokusendo</h3>
+        <div class="tags">Taxi ~1h · Nên thuê xe</div>
+        <p>Hang thạch nhũ dài 5km với hàng triệu măng đá — một trong những hang lớn nhất Nhật Bản.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="souvenirs">
+  <div class="section-head">
+    <p class="section-kicker">Mua về làm quà</p>
+    <h2>Danh sách lưu niệm</h2>
+  </div>
+
+  <div class="souv-group">
+    <h3>🍬 Đồ ngọt</h3>
+    <div class="souv-scroller">
+      <div class="souv-card">
+        <img src="https://jasmine-chen-voicetube.github.io/2026_okinawa/souvenir-tart.jpg" alt="Bánh tart khoai lang tím">
+        <div class="txt"><h4>Bánh tart khoai lang tím</h4><p>Okashigoten — vị đại diện của Okinawa, ghé mua ngay trong tour D3.</p></div>
+      </div>
+      <div class="souv-card">
+        <img src="https://bobbytravel.tw/wp-content/uploads/2026/05/20260524225145_0_176f16.webp" alt="Chinsuko">
+        <div class="txt"><h4>Bánh Chinsuko</h4><p>Bánh truyền thống Ryukyu, nhiều vị, hộp lớn tiện chia tặng.</p></div>
+      </div>
+      <div class="souv-card">
+        <img src="https://bobbytravel.tw/wp-content/uploads/2026/05/20260524225218_0_d406ea.webp" alt="Baumkuchen Fukugiya">
+        <div class="txt"><h4>Bánh cuộn Fukugiya</h4><p>Baumkuchen 20 vòng, vị đường đen / mật ong / khoai tím.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="souv-group">
+    <h3>🍿 Đồ mặn / snack</h3>
+    <div class="souv-scroller">
+      <div class="souv-card">
+        <img src="https://bobbytravel.tw/wp-content/uploads/2026/05/20260524225210_0_8a89a4.webp" alt="Khoai tây chiên Calbee+">
+        <div class="txt"><h4>Khoai tây Calbee+</h4><p>Vị khoai tím / rong biển / đường đen, phiên bản giới hạn Okinawa.</p></div>
+      </div>
+      <div class="souv-card">
+        <img src="https://jasmine-chen-voicetube.github.io/2026_okinawa/souvenir-angel.jpg" alt="Angel Wing">
+        <div class="txt"><h4>Angel Wing snack</h4><p>Vị muối / mơ, tan ngay trong miệng — món hot trend gần đây.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="souv-group">
+    <h3>🥤 Đồ uống &amp; 🧂 gia vị</h3>
+    <div class="souv-scroller">
+      <div class="souv-card">
+        <img src="https://bobbytravel.tw/wp-content/uploads/2026/05/20260524225143_0_4359d8.webp" alt="Bia Orion">
+        <div class="txt"><h4>Bia Orion</h4><p>Bia địa phương chiếm hơn 50% thị phần — bán ở siêu thị, cửa hàng tiện lợi.</p></div>
+      </div>
+      <div class="souv-card">
+        <img src="https://bobbytravel.tw/wp-content/uploads/2026/05/20260524225140_0_49d38f.webp" alt="Dầu ớt Henza">
+        <div class="txt"><h4>Dầu ớt Henza</h4><p>Sốt thần thánh từ Ishigaki — bán rất chạy, có bản thường / cay / tỏi.</p></div>
+      </div>
+      <div class="souv-card">
+        <img src="https://bobbytravel.tw/wp-content/uploads/2026/05/20260524225155_0_9235bc.webp" alt="Muối tuyết">
+        <div class="txt"><h4>Muối tuyết Miyako</h4><p>Khoáng chất hàng đầu thế giới, còn có bánh vị muối.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="souv-group">
+    <h3>🎀 Kỷ niệm</h3>
+    <div class="souv-scroller">
+      <div class="souv-card">
+        <img src="https://jasmine-chen-voicetube.github.io/2026_okinawa/souvenir-cup.jpg" alt="Ly đổi màu">
+        <div class="txt"><h4>Ly đổi màu Okinawa</h4><p>Rót đồ uống lạnh vào sẽ hiện hình biển / shisa — món hot hiện tại.</p></div>
+      </div>
+      <div class="souv-card">
+        <img src="https://d1grca2t3zpuug.cloudfront.net/2024/05/664d843140d81-860x500.webp" alt="Thủy tinh Ryukyu">
+        <div class="txt"><h4>Thủy tinh Ryukyu</h4><p>Nghề thủ công truyền thống — ly, chén, phụ kiện đầy màu sắc.</p></div>
+      </div>
+      <div class="souv-card">
+        <img src="https://jasmine-chen-voicetube.github.io/2026_okinawa/souvenir-tshirt.jpg" alt="Áo thun Okinawa">
+        <div class="txt"><h4>Áo thun giới hạn</h4><p>Orion / Blue Seal / HabuBox — bán ở American Village &amp; Kokusai-dori.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  Lịch trình cá nhân · Okinawa 19–22/9/2026
+</footer>
+
+</body>
+</html>
